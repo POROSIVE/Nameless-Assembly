@@ -3,7 +3,6 @@ Thank you for your interest in contributing to Nameless Assembly Project.
 
 ## Before You Start
 - Read README.md
-- Read CODE_STYLE.md
 - Check open issues
 - Discuss large changes before even tried to work on implementation
 - Follow the official Godot GDScript style guide.
@@ -102,3 +101,14 @@ Every PR must:
 - Explain what changed.
 - Explain how it was tested.
 - Avoid unrelated changes
+
+## Commits
+follow the commit summary based on their type:
+
+- feat: add player movement
+- feat: add enemy health system
+- fix: prevent player falling through floor
+- refactor: simplify combat manager
+- docs: update contribution guide
+- chore: update Godot version
+
