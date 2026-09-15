@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://buukibupwcvty"]
-
-[node name="Node3D" type="Node3D" unique_id=1584985614]
-
-[node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="." unique_id=1815501182]
