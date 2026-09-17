@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://nn4axf33xwwe"]
+
+[ext_resource type="Texture2D" uid="uid://jys3xv0t30sd" path="res://assets/Main-menu-bg.jpeg" id="1_3er1b"]
+[ext_resource type="Script" uid="uid://oti553oxxm3k" path="res://scene/main_menu.gd" id="1_hxu56"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_44c3d"]
+texture = ExtResource("1_3er1b")
+modulate_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+
+[node name="MainMenu" type="Control" unique_id=746023313]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hxu56")
+
+[node name="Panel" type="Panel" parent="." unique_id=1977583307]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_44c3d")
+
+[node name="NewGame-Button" type="Button" parent="." unique_id=1798369302]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 95.00001
+offset_top = -261.0
+offset_right = 234.0
+offset_bottom = -218.0
+grow_vertical = 0
+scale = Vector2(1.0578593, 1.3649963)
+theme_override_colors/font_color = Color(0.5254902, 0.4745098, 0.41960785, 1)
+theme_override_font_sizes/font_size = 25
+text = "New Game"
+
+[node name="LoadGame-Button" type="Button" parent="." unique_id=417843086]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 92.00001
+offset_top = -215.99997
+offset_right = 236.0
+offset_bottom = -173.0
+grow_vertical = 0
+scale = Vector2(1.0578593, 1.3649963)
+theme_override_colors/font_color = Color(0.5254902, 0.4745098, 0.41960785, 1)
+theme_override_font_sizes/font_size = 25
+text = "Load Game"
+
+[node name="Settings-Button" type="Button" parent="." unique_id=20714775]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 80.00001
+offset_top = -170.0
+offset_right = 218.9599
+offset_bottom = -127.0
+grow_vertical = 0
+scale = Vector2(1.0578593, 1.3649963)
+theme_override_colors/font_color = Color(0.5254902, 0.4745098, 0.41960785, 1)
+theme_override_font_sizes/font_size = 25
+text = "Settings"
+
+[node name="Quit-Button" type="Button" parent="." unique_id=2110888889]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 58.000008
+offset_top = -125.0
+offset_right = 196.01459
+offset_bottom = -82.0
+grow_vertical = 0
+scale = Vector2(1.0578593, 1.3649963)
+theme_override_colors/font_color = Color(0.5254902, 0.4745098, 0.41960785, 1)
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+
+[connection signal="pressed" from="NewGame-Button" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="LoadGame-Button" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="Settings-Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Quit-Button" to="." method="_on_quit_button_pressed"]
