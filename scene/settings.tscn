@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://yops06vuousp"]
+
+[ext_resource type="Texture2D" uid="uid://dyr5ci0nvlvqx" path="res://assets/bg.jpeg" id="1_likc5"]
+[ext_resource type="Script" uid="uid://d0q5r0c7172l8" path="res://scene/settings.gd" id="1_ok4lx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_44c3d"]
+texture = ExtResource("1_likc5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhf66"]
+bg_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+shadow_color = Color(1, 1, 1, 0.6)
+
+[sub_resource type="Theme" id="Theme_2fwvj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sepwh"]
+bg_color = Color(0.7411765, 0.7411765, 0.7411765, 0.2627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxu56"]
+bg_color = Color(0.22486866, 0.69605905, 0.5049354, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14wem"]
+bg_color = Color(0.6, 0.6, 0.6, 0.2627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2atga"]
+bg_color = Color(0.6, 0.6, 0.6, 0.2627451)
+
+[node name="Settings" type="Control" unique_id=1195230089]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ok4lx")
+
+[node name="Panel" type="Panel" parent="." unique_id=1565792647]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_44c3d")
+
+[node name="back" type="Button" parent="." unique_id=2001508548]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -531.0
+offset_top = 241.0
+offset_right = -417.0
+offset_bottom = 277.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.6529218, 1.4319738)
+theme_override_colors/font_color = Color(0.5254902, 0.4745098, 0.41960785, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_uhf66")
+text = "Back"
+
+[node name="VolSlider" type="Label" parent="." unique_id=1315017004]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 152.0
+offset_right = 889.0
+offset_bottom = 194.0
+theme = SubResource("Theme_2fwvj")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_sepwh")
+text = "Volume:"
+
+[node name="volume" type="HSlider" parent="VolSlider" unique_id=1944784350]
+layout_mode = 0
+offset_top = 46.0
+offset_right = 492.0
+offset_bottom = 62.0
+theme = SubResource("Theme_2fwvj")
+theme_override_styles/slider = SubResource("StyleBoxFlat_hxu56")
+
+[node name="Mute" type="Label" parent="." unique_id=1046297744]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 249.0
+offset_right = 457.0
+offset_bottom = 282.0
+pivot_offset = Vector2(67, 15)
+theme = SubResource("Theme_2fwvj")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_14wem")
+text = "Mute:"
+
+[node name="CheckBox" type="CheckBox" parent="Mute" unique_id=1584522420]
+layout_mode = 0
+offset_left = 82.00002
+offset_top = -5.0
+offset_right = 98.504616
+offset_bottom = 19.0
+scale = Vector2(1.8833735, 1.8639282)
+theme = SubResource("Theme_2fwvj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_14wem")
+
+[node name="resolution" type="Label" parent="." unique_id=779097196]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 339.0
+offset_right = 887.0
+offset_bottom = 381.0
+theme = SubResource("Theme_2fwvj")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_2atga")
+text = "Resolution:"
+
+[node name="Resolution" type="OptionButton" parent="resolution" unique_id=593465285]
+layout_mode = 0
+offset_top = 46.0
+offset_right = 492.0
+offset_bottom = 77.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_2atga")
+selected = 2
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="VolSlider/volume" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="Mute/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="item_selected" from="resolution/Resolution" to="." method="_on_resolution_item_selected"]

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://fveer11xamlj"]
+
+[ext_resource type="Script" uid="uid://fxfa81y5sqrd" path="res://scene/menu.gd" id="1_8hxod"]
+[ext_resource type="Texture2D" uid="uid://dyr5ci0nvlvqx" path="res://assets/bg.jpeg" id="2_8hxod"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_njq44"]
+texture = ExtResource("2_8hxod")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hxod"]
+bg_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+shadow_color = Color(1, 1, 1, 0.6)
+
+[node name="game-menu" type="Control" unique_id=1495864458]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8hxod")
+
+[node name="Panel" type="Panel" parent="." unique_id=1909768757]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_njq44")
+
+[node name="resume" type="Button" parent="." unique_id=303235564]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -52.0
+offset_right = -41.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.165525, 2.5447433)
+theme_override_colors/font_color = Color(0.5254902, 0.4745098, 0.41960785, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_8hxod")
+text = "Resume"
+
+[node name="setting" type="Button" parent="." unique_id=91792149]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = 55.0
+offset_right = -41.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.165525, 2.5447433)
+theme_override_colors/font_color = Color(0.5254902, 0.4745098, 0.41960785, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_8hxod")
+text = "Setting"
+
+[connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="setting" to="." method="_on_setting_pressed"]
