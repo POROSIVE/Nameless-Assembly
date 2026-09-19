@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dfbjktltfbw5q" path="res://script/global.gd" id="1_ml5ba"]
 [ext_resource type="PackedScene" uid="uid://b42mvuyy0p2lb" path="res://scene/materializer.tscn" id="3_5dvlo"]
 [ext_resource type="Texture2D" uid="uid://c82lawh5rw00p" path="res://assets/layout.png" id="3_ml5ba"]
-[ext_resource type="Script" uid="uid://d3uqx7smm3tx8" path="res://script/Players.gd" id="4_ml5ba"]
+[ext_resource type="Script" uid="uid://d1fdru67rqkbe" path="res://script/Player.gd" id="4_ml5ba"]
 [ext_resource type="PackedScene" uid="uid://cepfj1yxvxv7q" path="res://scene/flex_pipe.tscn" id="4_xlgvp"]
 [ext_resource type="Texture2D" uid="uid://61or2c61pnwy" path="res://assets/crosshairs/crosshair0.png" id="5_2cv5u"]
 [ext_resource type="PackedScene" uid="uid://cg0vda4cap3yy" path="res://scene/Smelter.tscn" id="6_5or7w"]
