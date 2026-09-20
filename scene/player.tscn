@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dembt2gogk83m"]
+
+[ext_resource type="Script" uid="uid://d1fdru67rqkbe" path="res://script/Player.gd" id="1_hjaqi"]
+[ext_resource type="Texture2D" uid="uid://61or2c61pnwy" path="res://assets/crosshairs/crosshair0.png" id="2_fvtld"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ml5ba"]
+radius = 0.55
+height = 2.7
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mmmqq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx4i3"]
+radius = 0.4
+height = 1.0
+
+[node name="Player" type="CharacterBody3D" unique_id=225428914]
+script = ExtResource("1_hjaqi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1702263325]
+mesh = SubResource("CapsuleMesh_ml5ba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1050407151]
+shape = SubResource("CapsuleShape3D_mmmqq")
+
+[node name="Head" type="Node3D" parent="." unique_id=1660382925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0.68263984, -0.22741032)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1174712964]
+transform = Transform3D(1.821, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032856226, 0)
+
+[node name="InteractionRay" type="RayCast3D" parent="Head/Camera3D" unique_id=210104952]
+transform = Transform3D(2.44, 0, 0, 0, -0.051618528, -2.4394538, 0, 2.4394538, -0.051618528, 0, 0, 0)
+debug_shape_thickness = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Head" unique_id=691522949]
+
+[node name="CenterContainer" type="CenterContainer" parent="Head/CanvasLayer" unique_id=470580684]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="Head/CanvasLayer/CenterContainer" unique_id=909732909]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_fvtld")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=268380724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_sx4i3")
+target_position = Vector3(0, 0.5, 0)

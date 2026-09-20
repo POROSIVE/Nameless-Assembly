@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://beggma670dqmj"]
 
-[ext_resource type="Texture2D" uid="uid://5e5ntfsfr3s7" path="res://assets/NIEbanner.png" id="1_mr66h"]
+[ext_resource type="Texture2D" uid="uid://dd7yc0s1oghfw" path="res://assets/contoour3bw.png" id="1_mr66h"]
 [ext_resource type="Script" uid="uid://c7mqoy0agamt4" path="res://script/start_menu.gd" id="2_wmmby"]
 [ext_resource type="Script" uid="uid://cwm20ouv8xnmv" path="res://script/settings_menu.gd" id="3_qp55b"]
+[ext_resource type="FontFile" uid="uid://bebnno8fsoe44" path="res://assets/Corpta DEMO.otf" id="3_taagd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syyua"]
+bg_color = Color(0.4661808, 0.46618086, 0.46618068, 0.77254903)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sepwh"]
+bg_color = Color(0.33660775, 0.33660758, 0.3366077, 0.63529414)
 
 [node name="Control" type="Control" unique_id=1690805445]
 layout_mode = 3
@@ -13,8 +20,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=190717203]
-position = Vector2(645, 361)
-scale = Vector2(0.5, 0.5)
+position = Vector2(640, 361.00003)
+scale = Vector2(0.79749215, 0.79598665)
 texture = ExtResource("1_mr66h")
 
 [node name="StartMenu" type="Control" parent="." unique_id=281681008]
@@ -34,7 +41,7 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 112.0
-offset_top = -374.0
+offset_top = -185.0
 offset_right = 612.0
 offset_bottom = -74.0
 grow_vertical = 0
@@ -43,7 +50,10 @@ alignment = 2
 [node name="Start_btn" type="Button" parent="StartMenu/VBoxContainer" unique_id=882474726]
 z_index = 12
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_taagd")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_syyua")
 action_mode = 0
 text = "Start"
 alignment = 0
@@ -51,7 +61,10 @@ alignment = 0
 [node name="settings_btn" type="Button" parent="StartMenu/VBoxContainer" unique_id=450634087]
 z_index = 12
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_taagd")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_syyua")
 action_mode = 0
 text = "Settings"
 alignment = 0
@@ -59,12 +72,14 @@ alignment = 0
 [node name="RichTextLabel" type="RichTextLabel" parent="StartMenu" unique_id=1719319496]
 z_index = 3
 layout_mode = 0
-offset_left = 95.0
-offset_top = 335.0
-offset_right = 592.0
-offset_bottom = 429.0
+offset_left = 196.0
+offset_top = 111.0
+offset_right = 1062.0
+offset_bottom = 269.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 45
+theme_override_fonts/normal_font = ExtResource("3_taagd")
+theme_override_font_sizes/normal_font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_sepwh")
 text = "Nameless Assembly"
 vertical_alignment = 1
 
@@ -112,6 +127,7 @@ alignment = 1
 [node name="Label" type="Label" parent="SettingsMenu/VBoxContainer" unique_id=1577874386]
 z_index = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_taagd")
 text = "Volume"
 
 [node name="VolumeSlider" type="HSlider" parent="SettingsMenu/VBoxContainer" unique_id=332477025]
@@ -138,6 +154,7 @@ z_index = 1
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_taagd")
 text = "Vsync"
 
 [node name="VsyncCheckBox" type="CheckBox" parent="SettingsMenu/HBoxContainer" unique_id=1926543353]
@@ -165,6 +182,7 @@ z_index = 1
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_taagd")
 text = "Max FPS"
 
 [node name="FpsSpinBox" type="SpinBox" parent="SettingsMenu/HBoxContainer2" unique_id=427693021]
