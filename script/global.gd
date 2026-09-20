@@ -7,6 +7,12 @@ extends Node3D
 func _ready():
 	settings_menu.hide()
 	player.capture_mouse()
+	if not Engine.has_singleton("RecipeManager"):
+		var rm = preload("res://script/RecipeManager.gd").new()
+		rm.name = "RecipeManager"
+		Engine.register_singleton("RecipeManager", rm)
+		get_tree().root.add_child(rm)
+
 
 func _input(event):
 #	I tried many times getting this right I really hope not gonna touch this again

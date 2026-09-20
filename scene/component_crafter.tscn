@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dyqfg5dupaanx"]
+
+[ext_resource type="Script" uid="uid://c2ocnja3843al" path="res://script/ComponentCrafter.gd" id="1_e7i8x"]
+[ext_resource type="FontFile" uid="uid://bebnno8fsoe44" path="res://assets/Corpta DEMO.otf" id="2_yr1wp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_44c3d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxle8"]
+albedo_color = Color(0.7764706, 0.54509807, 0.24705882, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yuier"]
+material = SubResource("StandardMaterial3D_gxle8")
+size = Vector3(2, 1.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_44c3d"]
+size = Vector3(2, 1.5, 1)
+
+[node name="component_crafter" type="Node3D" unique_id=2043469848]
+
+[node name="ComponentCrafter" type="StaticBody3D" parent="." unique_id=1168446345]
+physics_material_override = SubResource("PhysicsMaterial_44c3d")
+script = ExtResource("1_e7i8x")
+display_name = null
+auto_pick_recipe = null
+recipe_id = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ComponentCrafter" unique_id=462703095]
+mesh = SubResource("BoxMesh_yuier")
+
+[node name="Collision" type="CollisionShape3D" parent="ComponentCrafter" unique_id=928350769]
+shape = SubResource("BoxShape3D_44c3d")
+
+[node name="PromptLabel" type="Label3D" parent="ComponentCrafter" unique_id=1120970561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+billboard = 2
+font = ExtResource("2_yr1wp")
+font_size = 48
+outline_size = 8

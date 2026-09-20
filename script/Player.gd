@@ -176,42 +176,41 @@ func try_grab_hose_from_camera() -> void:
 		print("Nothing detected by interaction ray.")
 		return
 		
-	var hit_object: Node = find_hose_handle(
-		interaction_ray.get_collider()
-	)
-	try_grab_hose_handle(hit_object)
+	var collider: Node = interaction_ray.get_collider()
+	
+	if collider.has_method("interact"):
+		collider.interact(self)
+		return
+		
+	var hose_handle: Node = find_hose_handle(collider)
+	try_grab_hose_handle(hose_handle)
 	
 func try_grab_hose_handle(hit_object: Node) -> void:
 	if hit_object == null:
 		return
 	if not hit_object.is_in_group("hose_handle"):
-		print("Object is not a hose handle.")
+		print("Could not find hose parent.")
 		return
-	# StartHandle and EndHandle are direct children of FlexibleHose.
+		
 	var hose = hit_object.get_parent()
-	if hose == null:
-		print("could not find the hose parent.")
-		return
 	if not hose.has_method("begin_grabbing_start") or not hose.has_method("begin_grabbing_end"):
-		print("the parent does not appear to be FlexibleHouse")
-		return	
+		print("The Parent does not appear to be a flexiblehose.")
+		return
 	if hit_object.name == "StartHandle":
 		hose.begin_grabbing_start()
 		grabbed_hose = hose
 		grabbed_end = "start"
-		print("Grabbed Start of hose.")
+		print("Grabbed START of hose.")
 		return
 		
 	if hit_object.name == "EndHandle":
 		hose.begin_grabbing_end()
-		grabbed_hose = hose
+		grabbed_hose = hose 
 		grabbed_end = "end"
 		print("Grabbed END of hose.")
 		return
 		
 	print("Could not grab this hose handle.")
-	
-	
 
 func update_hose_grab() -> void:	
 	if grabbed_hose == null:		
