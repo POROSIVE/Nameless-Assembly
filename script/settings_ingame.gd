@@ -32,7 +32,8 @@ func _on_vsync_toggled(pressed: bool) -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	save_settings()
 
-func _on_fps_changed(value: float) -> void:
+
+func _on_fps_spin_box_value_changed(value: float) -> void:
 	Engine.max_fps = int(value)
 	save_settings()
 

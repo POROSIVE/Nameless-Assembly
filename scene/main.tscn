@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://yw5sklf12ukj"]
+
+[ext_resource type="Script" uid="uid://6efovsxufxy2" path="res://scene/Player.gd" id="1_itxqv"]
+[ext_resource type="Texture2D" uid="uid://bcwgwi0nn0e4p" path="res://assets/crosshairs/crosshair6.png" id="2_v0l8b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_itxqv"]
+sky_top_color = Color(7.12335e-06, 0.69596, 0.950312, 1)
+sky_horizon_color = Color(1.11776, 1.32189, 1.3944, 1)
+ground_bottom_color = Color(0.521187, 0.64176, 0.677472, 1)
+ground_horizon_color = Color(1.11776, 1.32189, 1.3944, 1)
+
+[sub_resource type="Sky" id="Sky_v0l8b"]
+sky_material = SubResource("ProceduralSkyMaterial_itxqv")
+
+[sub_resource type="Environment" id="Environment_wp4xf"]
+background_mode = 2
+sky = SubResource("Sky_v0l8b")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_itxqv"]
+size = Vector3(1, 100, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_44c3d"]
+height = 2.5610352
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v0l8b"]
+points = PackedVector3Array(0.497662, 0.7907452, -0.029336793, -0.4855112, -0.8732846, -0.06763229, -0.4475855, -0.94948554, -0.14364305, 0.31003758, -1.0188396, 0.31003758, -0.2545852, 0.8635938, 0.42118543, -0.06763229, 0.8732846, -0.4855112, 0.26957357, -0.89651173, -0.40265667, -0.4143503, 1.0370753, -0.10694616, -0.2545859, -0.8635961, 0.4211865, 0.23386885, 0.9031423, 0.4220603, 0.16435862, 1.250341, 0.04711621, -0.24908894, -0.7352007, -0.4329539, -0.06994644, -1.2522423, -0.14822692, 0.46456775, -0.9507684, -0.067759834, 0.3407626, 0.8129872, -0.36136794, -0.47439, 0.74222964, 0.15653862, 0.045648783, -0.78961843, 0.49696445, -0.4329539, 0.7352007, -0.24908894, 0.41740778, -0.81840026, 0.26854682, -0.18380323, -1.1523956, 0.27702415, 0.083749704, -0.87041926, -0.48389152, -0.43906125, -0.8198717, 0.23173289, -0.18380305, 1.1523945, 0.2770239, -0.03047797, 1.2027934, -0.26333988, 0.4220603, 0.9031423, 0.23386885, -0.029337063, 0.79075086, 0.49766552, 0.45149508, -0.7758641, -0.21340422, 0.16435862, -1.250341, 0.047116205, 0.35412917, 1.1149375, -0.10703351, 0.1956, 0.9001148, -0.44181973, -0.25625274, 0.9069537, -0.4074413, -0.14511685, -1.0737981, -0.3752872)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_44c3d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44c3d"]
+albedo_color = Color(0.9411765, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxle8"]
+albedo_color = Color(0, 0.33659786, 0.08189999, 1)
+
+[node name="main" type="Node3D" unique_id=467625552]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=197883932]
+environment = SubResource("Environment_wp4xf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1699361008]
+transform = Transform3D(-0.866025, -0.492404, 0.0868241, 0, 0.173648, 0.984808, -0.5, 0.852868, -0.150384, 0, 0, 0)
+shadow_enabled = true
+
+[node name="tower" type="MeshInstance3D" parent="." unique_id=175270556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.959, -3.523)
+mesh = SubResource("BoxMesh_itxqv")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1685528724]
+transform = Transform3D(1.5154576, 0, 0, 0, 1.2442566, 0, 0, 0, 1.1502804, 0, -0.9202652, 0)
+script = ExtResource("1_itxqv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=98828250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5538743, 0)
+mesh = SubResource("CapsuleMesh_44c3d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=625226628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6106033, 0)
+shape = SubResource("ConvexPolygonShape3D_v0l8b")
+
+[node name="Head" type="Node3D" parent="Player" unique_id=1926153420]
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head" unique_id=258517790]
+transform = Transform3D(0.6598667, 0, 0, 0, 0.80369276, 0, 0, 0, 0.86935335, 0, 3.1761353, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Head" unique_id=1384171957]
+
+[node name="CenterContainer" type="CenterContainer" parent="Player/Head/CanvasLayer" unique_id=1189395044]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="Player/Head/CanvasLayer/CenterContainer" unique_id=1096988824]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_v0l8b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Player" unique_id=825291269]
+transform = Transform3D(-1.0234216, 0, 0, 0, 1.2705501, 0, 0, 0, 0.99727845, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_44c3d")
+target_position = Vector3(0, 0.5, 0)
+
+[node name="test box" type="CSGBox3D" parent="." unique_id=1583522927]
+transform = Transform3D(1, 0, 0, 0, 3.4217722, 0, 0, 0, 2.129743, 4.366321, 0, 5.644073)
+material_override = SubResource("StandardMaterial3D_44c3d")
+use_collision = true
+size = Vector3(2.7036133, 1, 1)
+
+[node name="ground" type="CSGBox3D" parent="." unique_id=1552630233]
+transform = Transform3D(62.55599, 0, 0, 0, 1, 0, 0, 0, 35.71333, 0, 0, -1.3285685)
+material_override = SubResource("StandardMaterial3D_gxle8")
+use_collision = true
+size = Vector3(1, 1, 1.8261108)

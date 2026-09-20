@@ -3,11 +3,20 @@
 [ext_resource type="Script" uid="uid://dfbjktltfbw5q" path="res://script/global.gd" id="1_ml5ba"]
 [ext_resource type="PackedScene" uid="uid://b42mvuyy0p2lb" path="res://scene/materializer.tscn" id="3_5dvlo"]
 [ext_resource type="Texture2D" uid="uid://c82lawh5rw00p" path="res://assets/layout.png" id="3_ml5ba"]
-[ext_resource type="Script" uid="uid://d1fdru67rqkbe" path="res://script/Player.gd" id="4_ml5ba"]
+[ext_resource type="FontFile" uid="uid://bebnno8fsoe44" path="res://assets/Corpta DEMO.otf" id="3_sx4i3"]
 [ext_resource type="PackedScene" uid="uid://cepfj1yxvxv7q" path="res://scene/flex_pipe.tscn" id="4_xlgvp"]
-[ext_resource type="Texture2D" uid="uid://61or2c61pnwy" path="res://assets/crosshairs/crosshair0.png" id="5_2cv5u"]
+[ext_resource type="PackedScene" uid="uid://dembt2gogk83m" path="res://scene/player.tscn" id="5_ml5ba"]
 [ext_resource type="PackedScene" uid="uid://cg0vda4cap3yy" path="res://scene/Smelter.tscn" id="6_5or7w"]
 [ext_resource type="Script" uid="uid://djs0juffe8ebd" path="res://script/settings_ingame.gd" id="7_2cv5u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxmwa"]
+bg_color = Color(0.6, 0.6, 0.6, 0.49411765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp0dp"]
+bg_color = Color(0.6, 0.6, 0.6, 0.49411765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngjds"]
+bg_color = Color(0.6, 0.6, 0.6, 0.49411765)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_itxqv"]
 sky_top_color = Color(7.12335e-06, 0.69596, 0.950312, 1)
@@ -47,12 +56,6 @@ size = Vector3(1000, 102, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mmmqq"]
 size = Vector2(102, 1000)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ml5ba"]
-radius = 0.55
-height = 2.7
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mmmqq"]
 
 [node name="main" type="Node3D" unique_id=1121479232]
 script = ExtResource("1_ml5ba")
@@ -98,6 +101,9 @@ alignment = 1
 [node name="Label" type="Label" parent="Ingame_Settings/VBoxContainer" unique_id=670566738]
 z_index = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_sx4i3")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxmwa")
 text = "Volume"
 
 [node name="VolumeSlider" type="HSlider" parent="Ingame_Settings/VBoxContainer" unique_id=155910967]
@@ -117,6 +123,8 @@ z_index = 1
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_sx4i3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qp0dp")
 text = "Vsync"
 
 [node name="VsyncCheckBox" type="CheckBox" parent="Ingame_Settings/HBoxContainer" unique_id=1405270154]
@@ -137,12 +145,17 @@ z_index = 1
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_sx4i3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngjds")
 text = "Max FPS"
 
 [node name="FpsSpinBox" type="SpinBox" parent="Ingame_Settings/HBoxContainer2" unique_id=327516249]
 z_index = 1
 layout_mode = 2
-max_value = 1000.0
+min_value = 30.0
+max_value = 999.0
+value = 30.0
+rounded = true
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Ingame_Settings" unique_id=1033295338]
 z_index = 2
@@ -170,6 +183,8 @@ environment = SubResource("Environment_wp4xf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=948700361]
 transform = Transform3D(-0.866025, -0.492404, 0.0868241, 0, 0.173648, 0.984808, -0.5, 0.852868, -0.150384, 0, 0, 0)
+light_energy = 0.549
+light_indirect_energy = 0.775
 shadow_enabled = true
 
 [node name="ground" type="StaticBody3D" parent="." unique_id=1705239941]
@@ -253,48 +268,8 @@ mesh = SubResource("PlaneMesh_mmmqq")
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -500, 50, 0)
 mesh = SubResource("PlaneMesh_mmmqq")
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=1907780187]
+[node name="Player" parent="." unique_id=225428914 instance=ExtResource("5_ml5ba")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4994059, -4.8154535)
-script = ExtResource("4_ml5ba")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1329241667]
-mesh = SubResource("CapsuleMesh_ml5ba")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1002545019]
-shape = SubResource("CapsuleShape3D_mmmqq")
-
-[node name="Head" type="Node3D" parent="Player" unique_id=1660800718]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0.68263984, -0.22741032)
-
-[node name="Camera3D" type="Camera3D" parent="Player/Head" unique_id=888893787]
-transform = Transform3D(0.65986663, 0, 0, 0, 0.80369264, 0, 0, 0, 0.86935306, 0, 0.032856226, 0)
-
-[node name="InteractionRay" type="RayCast3D" parent="Player/Head/Camera3D" unique_id=1376134756]
-transform = Transform3D(2.44, 0, 0, 0, -0.051618528, -2.4394538, 0, 2.4394538, -0.051618528, 0, 0, 0)
-debug_shape_thickness = 5
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Player/Head" unique_id=564842131]
-
-[node name="CenterContainer" type="CenterContainer" parent="Player/Head/CanvasLayer" unique_id=444437299]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="TextureRect" type="TextureRect" parent="Player/Head/CanvasLayer/CenterContainer" unique_id=1395423878]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("5_2cv5u")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="Smelter" parent="." unique_id=1556488523 instance=ExtResource("6_5or7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2690153, 0.18772791, -0.57517457)
@@ -304,3 +279,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.429529, 0.21871851, -12.763
 
 [node name="FlexPipe" parent="." unique_id=300330135 instance=ExtResource("4_xlgvp")]
 transform = Transform3D(1, 0, 0, 0, -0.0038528785, 0.99999255, 0, -0.99999255, -0.0038528785, 0, 1.6359634, -7.3771725)
+
+[connection signal="value_changed" from="Ingame_Settings/HBoxContainer2/FpsSpinBox" to="Ingame_Settings" method="_on_fps_spin_box_value_changed"]
