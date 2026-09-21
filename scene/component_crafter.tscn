@@ -10,24 +10,40 @@ albedo_color = Color(0.7764706, 0.54509807, 0.24705882, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yuier"]
 material = SubResource("StandardMaterial3D_gxle8")
-size = Vector3(2, 1.5, 1)
+size = Vector3(2.5, 1.5, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xk83y"]
+size = Vector3(0.39831543, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_niutn"]
+size = Vector3(0.30963135, 1, 1.3354492)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_44c3d"]
-size = Vector3(2, 1.5, 1)
+size = Vector3(2.36969, 1.5, 1.5292969)
 
 [node name="component_crafter" type="Node3D" unique_id=2043469848]
 
 [node name="ComponentCrafter" type="StaticBody3D" parent="." unique_id=1168446345]
 physics_material_override = SubResource("PhysicsMaterial_44c3d")
 script = ExtResource("1_e7i8x")
-display_name = null
-auto_pick_recipe = null
-recipe_id = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ComponentCrafter" unique_id=462703095]
 mesh = SubResource("BoxMesh_yuier")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ComponentCrafter" unique_id=1293852497]
+transform = Transform3D(1, 0, 0, 0, 1.6518639, 0, 0, 0, 1.6727958, 0.9086219, 0, 0)
+mesh = SubResource("BoxMesh_xk83y")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ComponentCrafter" unique_id=1907971793]
+transform = Transform3D(1, 0, 0, 0, 1.6518639, 0, 0, 0, 1.6727958, -0.8444041, 0, 0)
+mesh = SubResource("BoxMesh_xk83y")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="ComponentCrafter" unique_id=1265105887]
+transform = Transform3D(-4.3711385e-08, -1.6518639, 0, 0.9999999, -7.220527e-08, 0, 0, 0, 1.6727957, 0.03143263, 0.5425004, -0.280569)
+mesh = SubResource("BoxMesh_niutn")
+
 [node name="Collision" type="CollisionShape3D" parent="ComponentCrafter" unique_id=928350769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066833496, 0, -0.26464844)
 shape = SubResource("BoxShape3D_44c3d")
 
 [node name="PromptLabel" type="Label3D" parent="ComponentCrafter" unique_id=1120970561]

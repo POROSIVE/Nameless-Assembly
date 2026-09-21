@@ -39,6 +39,7 @@ var grabbed_end := ""
 @onready var original_cam_y: float = $Head/Camera3D.position.y
 
 func _ready() -> void:
+	add_to_group("player")
 #	all player inpt
 	capture_mouse()
 	current_cam_y = original_cam_y
@@ -56,10 +57,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			deg_to_rad(60.0)
 		)
 
+	if event.is_action_pressed("interact"):
+		try_interact()
 	if event.is_action_pressed("grab"):
 		if grabbed_hose == null:
 			try_grab_hose_from_camera()
-
 	if event.is_action_released("grab"):
 		if grabbed_hose != null:
 			release_hose()
@@ -150,8 +152,52 @@ func try_uncrouch() -> void:
 		print("Cant uncrouch, hitting: ", $ShapeCast3D.get_collider(0)) 
 	else:
 		is_crouching = false
+
+# example: for interacting with the crafter menu
+func try_interact() -> void:
+	if not interaction_ray.is_colliding():
+		print("Nothing detected by interaction ray.")
+		return
+
+	var hit_object := interaction_ray.get_collider() as Node
+	if hit_object == null:
+		return
+
+	var interactable := find_interactable(hit_object)
+	if interactable == null:
+		print("Object cannot be interacted with.")
+		return
+
+	interactable.interact(self)
+
+
+func find_interactable(node: Node) -> Node:
+	var current := node
+	while current != null:
+		if current.has_method("interact"):
+			return current
+		current = current.get_parent()
+	return null
+
+
+func _toggle_inventory() -> void:
+	var ui := get_tree().get_first_node_in_group("interaction_ui")
+	if ui != null and ui.has_method("toggle_inventory"):
+		ui.toggle_inventory()
 		
-#hose mechanics & mouse capture
+func _get_inventory(player: Node) -> PlayerInventory:
+	if player == null:
+		return null
+	var inventory_node := player.get_node_or_null("PlayerInventory")
+	if inventory_node is PlayerInventory:
+		return inventory_node
+	var inventory_nodes := get_tree().get_nodes_in_group("player_inventory")
+	for node in inventory_nodes:
+		if node is PlayerInventory:
+			return node
+	return null
+
+#hose mechanics & mouse capture for materializer and smelter pipes interaction
 func capture_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_captured = true

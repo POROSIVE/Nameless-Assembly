@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d1fdru67rqkbe" path="res://script/Player.gd" id="1_hjaqi"]
 [ext_resource type="Texture2D" uid="uid://61or2c61pnwy" path="res://assets/crosshairs/crosshair0.png" id="2_fvtld"]
+[ext_resource type="Script" uid="uid://timxquwwlfop" path="res://script/PlayerInventory.gd" id="3_fvtld"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ml5ba"]
 radius = 0.55
@@ -30,6 +31,7 @@ transform = Transform3D(1.821, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032856226, 0)
 
 [node name="InteractionRay" type="RayCast3D" parent="Head/Camera3D" unique_id=210104952]
 transform = Transform3D(2.44, 0, 0, 0, -0.051618528, -2.4394538, 0, 2.4394538, -0.051618528, 0, 0, 0)
+target_position = Vector3(0, -1.24, 0)
 debug_shape_thickness = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Head" unique_id=691522949]
@@ -59,3 +61,7 @@ stretch_mode = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_sx4i3")
 target_position = Vector3(0, 0.5, 0)
+
+[node name="PlayerInventory" type="Node" parent="." unique_id=308087645]
+script = ExtResource("3_fvtld")
+metadata/_custom_type_script = "uid://timxquwwlfop"

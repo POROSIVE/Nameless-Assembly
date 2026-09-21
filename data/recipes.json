@@ -1,39 +1,50 @@
 {
 	"recipes": [
 	{
-		"id": "copper_wire",
-		"display_name": "Copper Wire",
-		"inputs": [
-			{ "item": "copper_ingot", "amount": 1 }
-		],
-		"craft_time": 3.0,
-		"outputs": [
-			{ "item": "copper_wire", "amount": 2}
-		]
-	},
-	{
-		"id": "steel_plate",
+		"id": "ammo_backplate_0_steel",
 		"display_name": "Steel Plate",
 		"inputs": [
-			{ "item": "iron_ingot", "amount": 2 }
+			{ "item": "steel_ingot", "amount": 1 }
 		],
 		"craft_time": 5.0,
 		"outputs": [
-			{ "item": "copper_wire", "amount": 1}
+			{ "item": "ammo_backplate_0_steel", "amount": 1}
 		]
 	},
 	{
-		"id": "circuit_board",
+		"id": "ammo_shell_0_steel",
+		"display_name": "Steel Plate",
+		"inputs": [
+			{ "item": "steel_ingot", "amount": 2 }
+		],
+		"craft_time": 5.0,
+		"outputs": [
+			{ "item": "ammo_shell_0_steel", "amount": 1}
+		]
+	},
+	{
+		"id": "ammo_propellant_0_standard",
 		"display_name": "Circuit Board",
 		"inputs": [
-			{ "item": "copper_wire", "amount": 4 },
-			{ "item": "plastic", "amount": 2 }
+			{ "item": "unobtanium_powder", "amount": 4 },
+			{ "item": "resin", "amount": 2 }
 		],
 		"craft_time": 8.0,
 		"outputs": [
-			{ "item": "circuit_board", "amount": 1}
+			{ "item": "ammo_propellant_0_standard", "amount": 1}
 		]
 	},
-	
-]
+	{
+		"id": "ammo_payload_0_standard",
+		"display_name": "Circuit Board",
+		"inputs": [
+			{ "item": "unobtanium_powder", "amount": 2 },
+			{ "item": "steel_ingot", "amount": 1 }
+		],
+		"craft_time": 8.0,
+		"outputs": [
+			{ "item": "ammo_payload_0_standard", "amount": 1}
+		]
+	}
+	]
 }
