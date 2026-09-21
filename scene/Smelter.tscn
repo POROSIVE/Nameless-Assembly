@@ -1,10 +1,18 @@
 [gd_scene format=3 uid="uid://cg0vda4cap3yy"]
 
+[ext_resource type="Material" uid="uid://1r4p8twty1ai" path="res://assets/texture/smelter.tres" id="1_q2wnw"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_mmmqq"]
 size = Vector3(2.4, 5.5, 2.4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rvmar"]
 size = Vector3(2.4, 5.5, 2.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7nqn5"]
+size = Vector3(3.5, 1, 2.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t25kc"]
+size = Vector3(3.5, 1, 2.3)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mmmqq"]
 height = 1.2442969
@@ -13,48 +21,74 @@ radius = 0.43164063
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rvmar"]
 height = 1.4413671
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvmar"]
+size = Vector3(0.984, 1, 0.375)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mmmqq"]
+size = Vector3(0.984, 1, 0.375)
+
 [node name="Smelter" type="Node3D" unique_id=508212594]
 
-[node name="materializer" type="StaticBody3D" parent="." unique_id=1018001484]
+[node name="smelter_forger" type="StaticBody3D" parent="." unique_id=1018001484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2057965, 2.8818383, 0.6061152)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="materializer" unique_id=1450565180]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4397583, 2.6045902, 0.6022339)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="smelter_forger" unique_id=1450565180]
 shape = SubResource("BoxShape3D_mmmqq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="materializer" unique_id=446382854]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4397583, 2.6045902, 0.6022339)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="smelter_forger" unique_id=446382854]
+material_override = ExtResource("1_q2wnw")
 mesh = SubResource("BoxMesh_rvmar")
 
-[node name="materializerOutput1" type="CSGCylinder3D" parent="." unique_id=1433048165]
+[node name="smelter_forger2" type="StaticBody3D" parent="." unique_id=680925019]
+transform = Transform3D(1, 0, 0, 0, 1, -0.00021438485, 0, 0.00021438485, 1, 5.0949655, 0.74323606, 0.6061152)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="smelter_forger2" unique_id=92607650]
+shape = SubResource("BoxShape3D_7nqn5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="smelter_forger2" unique_id=756891045]
+material_override = ExtResource("1_q2wnw")
+mesh = SubResource("BoxMesh_t25kc")
+
+[node name="smelter_input" type="CSGCylinder3D" parent="." unique_id=1433048165]
 transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 1.9136717, 1.0136614, -0.45986998)
+material_override = ExtResource("1_q2wnw")
 use_collision = true
 height = 1.3447266
 sides = 16
 
-[node name="internalCylinder" type="CSGCylinder3D" parent="materializerOutput1" unique_id=536556039]
+[node name="internalCylinder" type="CSGCylinder3D" parent="smelter_input" unique_id=536556039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0733819, 0)
 operation = 2
 radius = 0.4008789
 height = 1.3048706
 sides = 16
 
-[node name="hatch" type="CSGCylinder3D" parent="materializerOutput1" unique_id=1174628963]
+[node name="hatch" type="CSGCylinder3D" parent="smelter_input" unique_id=1174628963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58981365, -0.92307925)
 radius = 0.43017578
 height = 0.036413193
 sides = 16
 
-[node name="Area3D" type="Area3D" parent="materializerOutput1" unique_id=1074928690 groups=["smelter_input"]]
+[node name="Area3D" type="Area3D" parent="smelter_input" unique_id=1074928690 groups=["smelter_input"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="materializerOutput1/Area3D" unique_id=546427148]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="smelter_input/Area3D" unique_id=546427148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03154272, 0)
 shape = SubResource("CylinderShape3D_mmmqq")
 
-[node name="DockPoint" type="Marker3D" parent="materializerOutput1/Area3D" unique_id=277604217]
+[node name="DockPoint" type="Marker3D" parent="smelter_input/Area3D" unique_id=277604217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6690088, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="materializerOutput1" unique_id=1460860959]
+[node name="StaticBody3D" type="StaticBody3D" parent="smelter_input" unique_id=1460860959]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="materializerOutput1/StaticBody3D" unique_id=719845515]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="smelter_input/StaticBody3D" unique_id=719845515]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.006816447, 0)
 shape = SubResource("CylinderShape3D_rvmar")
+
+[node name="OutputInterface" type="Area3D" parent="." unique_id=1112151678]
+transform = Transform3D(1, 0, 0, 0, 0.94843346, -0.3169763, 0, 0.3169763, 0.94843346, 6.304301, 0.99277735, -0.57899547)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutputInterface" unique_id=831463381]
+shape = SubResource("BoxShape3D_rvmar")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OutputInterface" unique_id=587379508]
+mesh = SubResource("BoxMesh_mmmqq")

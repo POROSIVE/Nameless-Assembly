@@ -1,19 +1,18 @@
 [gd_scene format=3 uid="uid://bf5lkgtaj04lq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r37mg"]
+size = Vector3(10, 1, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p31lp"]
+size = Vector3(10, 1, 5)
 
-[node name="UnitAssembly" type="CharacterBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" unique_id=1120040833]
 
-[node name="Marker3D" type="Marker3D" parent="."]
+[node name="Marker3D" type="Marker3D" parent="." unique_id=570015417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53963375, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=358006263]
 shape = SubResource("BoxShape3D_r37mg")
 
-[node name="joint" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_p31lp")
-
-[node name="upper_component" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1164, 0)
+[node name="holder" type="MeshInstance3D" parent="." unique_id=1012323077]
 mesh = SubResource("BoxMesh_p31lp")

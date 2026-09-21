@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b42mvuyy0p2lb"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mmmqq"]
+[ext_resource type="Material" uid="uid://bw2dgfhduaxl" path="res://assets/texture/materializer.tres" id="1_5lrt5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h3b22"]
+size = Vector3(5, 2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rvmar"]
 size = Vector3(5, 2, 1)
@@ -24,16 +27,18 @@ size = Vector3(0.5, 0.763, 0.5)
 [node name="Materializer" type="Node3D" unique_id=508212594]
 
 [node name="materializer" type="StaticBody3D" parent="." unique_id=1018001484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="materializer" unique_id=1450565180]
-shape = SubResource("BoxShape3D_mmmqq")
+shape = SubResource("BoxShape3D_h3b22")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="materializer" unique_id=446382854]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8235996, 0)
+material_override = ExtResource("1_5lrt5")
 mesh = SubResource("BoxMesh_rvmar")
 
 [node name="materializerOutput1" type="CSGCylinder3D" parent="." unique_id=1433048165]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.9136717, 1.0136614, 0.55142283)
+material_override = ExtResource("1_5lrt5")
 use_collision = true
 height = 1.3447266
 sides = 16
@@ -46,7 +51,7 @@ height = 1.3048706
 sides = 16
 
 [node name="hatch" type="CSGCylinder3D" parent="materializerOutput1" unique_id=1174628963]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58981365, -0.92307925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58981365, 0)
 radius = 0.43017578
 height = 0.036413193
 sides = 16
@@ -68,6 +73,7 @@ shape = SubResource("CylinderShape3D_rvmar")
 
 [node name="materializerOutput2" type="CSGCylinder3D" parent="." unique_id=599551479]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1.8795755, 1.0136614, 0.55142283)
+material_override = ExtResource("1_5lrt5")
 use_collision = true
 height = 1.3447266
 sides = 16
@@ -80,7 +86,7 @@ height = 1.3048706
 sides = 16
 
 [node name="hatch" type="CSGCylinder3D" parent="materializerOutput2" unique_id=1591270758]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58981365, -0.92307925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58981365, 0)
 radius = 0.43017578
 height = 0.036413193
 sides = 16
@@ -101,7 +107,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019101322, 0)
 shape = SubResource("CylinderShape3D_rvmar")
 
 [node name="mo1panel" type="StaticBody3D" parent="." unique_id=973942609]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2581486, 1, 0.5147822)
+transform = Transform3D(1, 0, 0, 0, 0.9752126, 0.22127, 0, -0.22127, 0.9752126, 1.2581486, 1, 0.5147822)
 
 [node name="panelMesh" type="MeshInstance3D" parent="mo1panel" unique_id=22976301]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06844759, 0, 0)
