@@ -6,7 +6,10 @@ size = Vector3(10, 1, 5)
 [sub_resource type="BoxMesh" id="BoxMesh_p31lp"]
 size = Vector3(10, 1, 5)
 
-[node name="StaticBody3D" type="StaticBody3D" unique_id=1120040833]
+[sub_resource type="BoxMesh" id="BoxMesh_5t41g"]
+size = Vector3(10.19, 1.17, 0.394)
+
+[node name="unit_assembly" type="StaticBody3D" unique_id=1120040833]
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=570015417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53963375, 0)
@@ -14,5 +17,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53963375, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=358006263]
 shape = SubResource("BoxShape3D_r37mg")
 
-[node name="holder" type="MeshInstance3D" parent="." unique_id=1012323077]
+[node name="foundation" type="MeshInstance3D" parent="." unique_id=1012323077]
 mesh = SubResource("BoxMesh_p31lp")
+
+[node name="side" type="MeshInstance3D" parent="." unique_id=2087939920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014531136, 2.627006)
+mesh = SubResource("BoxMesh_5t41g")
+
+[node name="side2" type="MeshInstance3D" parent="." unique_id=2003127971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014326058, -2.627)
+mesh = SubResource("BoxMesh_5t41g")
