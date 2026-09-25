@@ -116,3 +116,14 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mo1panel" unique_id=614050559]
 shape = SubResource("BoxShape3D_7nqn5")
+
+[node name="mo1panel2" type="StaticBody3D" parent="." unique_id=372864918]
+transform = Transform3D(1, 0, 0, 0, 0.9752126, 0.22127, 0, -0.22127, 0.9752126, -1.1085838, 1, 0.5147822)
+
+[node name="panelMesh" type="MeshInstance3D" parent="mo1panel2" unique_id=405082754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06844759, 0, 0)
+mesh = SubResource("BoxMesh_mmmqq")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mo1panel2" unique_id=1555385164]
+shape = SubResource("BoxShape3D_7nqn5")

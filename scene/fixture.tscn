@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bundg72jqpyk2"]
+
+[ext_resource type="Material" uid="uid://p2afpu7p35cn" path="res://assets/texture/light.tres" id="1_3ua5e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mmmqq"]
+size = Vector3(10, 0.37, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rvmar"]
+size = Vector3(9.5, 0.3, 0.8)
+
+[node name="fixture" type="MeshInstance3D" unique_id=255057396]
+mesh = SubResource("BoxMesh_mmmqq")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=266448484]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.20443273, 0)
+shadow_enabled = true
+area_range = 100.0
+area_normalize_energy = false
+area_size = Vector2(9.624333, 0.78204876)
+
+[node name="bulb" type="MeshInstance3D" parent="." unique_id=1085838453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06233704, 0)
+material_override = ExtResource("1_3ua5e")
+mesh = SubResource("BoxMesh_rvmar")

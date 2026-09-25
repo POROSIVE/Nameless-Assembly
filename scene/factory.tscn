@@ -1,16 +1,14 @@
 [gd_scene format=3 uid="uid://v2020e26nbsm"]
 
 [ext_resource type="Script" uid="uid://dfbjktltfbw5q" path="res://script/global.gd" id="1_ml5ba"]
-[ext_resource type="PackedScene" uid="uid://b42mvuyy0p2lb" path="res://scene/materializer.tscn" id="3_5dvlo"]
 [ext_resource type="Texture2D" uid="uid://c82lawh5rw00p" path="res://assets/layout.png" id="3_ml5ba"]
 [ext_resource type="FontFile" uid="uid://bebnno8fsoe44" path="res://assets/Corpta DEMO.otf" id="3_sx4i3"]
 [ext_resource type="Script" uid="uid://3ie6hdys6vsj" path="res://script/interaction_ui.gd" id="4_xk83y"]
-[ext_resource type="PackedScene" uid="uid://cepfj1yxvxv7q" path="res://scene/flex_pipe.tscn" id="4_xlgvp"]
 [ext_resource type="PackedScene" uid="uid://dembt2gogk83m" path="res://scene/player.tscn" id="5_ml5ba"]
-[ext_resource type="PackedScene" uid="uid://cg0vda4cap3yy" path="res://scene/Smelter.tscn" id="6_5or7w"]
 [ext_resource type="Script" uid="uid://djs0juffe8ebd" path="res://script/settings_ingame.gd" id="7_2cv5u"]
-[ext_resource type="PackedScene" uid="uid://dyqfg5dupaanx" path="res://scene/component_crafter.tscn" id="10_f0urj"]
-[ext_resource type="PackedScene" uid="uid://bf5lkgtaj04lq" path="res://scene/unit_assembly.tscn" id="10_xk83y"]
+[ext_resource type="PackedScene" uid="uid://bfp6e1nsoio57" path="res://scene/central_hub.tscn" id="12_niutn"]
+[ext_resource type="PackedScene" uid="uid://biawy8hkmlta0" path="res://scene/globuls.tscn" id="14_phqmk"]
+[ext_resource type="PackedScene" uid="uid://bundg72jqpyk2" path="res://scene/fixture.tscn" id="14_qv8os"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_itxqv"]
 sky_top_color = Color(7.12335e-06, 0.69596, 0.950312, 1)
@@ -49,11 +47,13 @@ size = Vector3(1000, 102, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_mmmqq"]
 size = Vector2(102, 1000)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mmmqq"]
+size = Vector3(1000, 1, 1000)
+
 [node name="main" type="Node3D" unique_id=1121479232]
 script = ExtResource("1_ml5ba")
 
 [node name="Ingame_Settings" type="Control" parent="." unique_id=324884305]
-visible = false
 custom_minimum_size = Vector2(700, 500)
 layout_mode = 3
 anchors_preset = 8
@@ -79,7 +79,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.411765, 0.411765, 0.356863)
+color = Color(0.8725773, 0.9142609, 7.70092e-07, 0.35686275)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Ingame_Settings" unique_id=893024618]
 z_index = 2
@@ -248,6 +248,14 @@ transform = Transform3D(-0.866025, -0.492404, 0.0868241, 0, 0.173648, 0.984808, 
 light_energy = 0.549
 light_indirect_energy = 0.775
 shadow_enabled = true
+shadow_reverse_cull_face = true
+directional_shadow_max_distance = 1000.0
+
+[node name="Player" parent="." unique_id=225428914 instance=ExtResource("5_ml5ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.806885, 1.4994059, -74.82125)
+
+[node name="centralHub" parent="." unique_id=1117179766 instance=ExtResource("12_niutn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.431004, 0.53931046, -211.99422)
 
 [node name="ground" type="StaticBody3D" parent="." unique_id=1705239941]
 
@@ -327,22 +335,50 @@ mesh = SubResource("PlaneMesh_mmmqq")
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -500, 50, 0)
 mesh = SubResource("PlaneMesh_mmmqq")
 
-[node name="Player" parent="." unique_id=225428914 instance=ExtResource("5_ml5ba")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4994059, -4.8154535)
+[node name="ceilling" type="StaticBody3D" parent="." unique_id=902111102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
-[node name="Smelter" parent="." unique_id=1556488523 instance=ExtResource("6_5or7w")]
-transform = Transform3D(-0.004003031, 0, -0.999992, 0, 1, 0, 0.999992, 0, -0.004003031, -4.2690153, 0.18772791, -4.7172084)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ceilling" unique_id=157427439]
+shape = SubResource("BoxShape3D_mmmqq")
 
-[node name="Materializer" parent="." unique_id=508212594 instance=ExtResource("3_5dvlo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011487246, -0.10390808, -13.318566)
+[node name="mesh" type="CSGBox3D" parent="ceilling" unique_id=1013406932]
+size = Vector3(1000, 1, 1000)
 
-[node name="FlexPipe" parent="." unique_id=300330135 instance=ExtResource("4_xlgvp")]
-transform = Transform3D(1, 0, 0, 0, -0.0038528785, 0.99999255, 0, -0.99999255, -0.0038528785, 0, 1.6359634, -7.3771725)
+[node name="window" type="CSGBox3D" parent="ceilling/mesh" unique_id=1031260916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.217285, 0, -416.40692)
+operation = 2
+size = Vector3(510, 1, 118)
 
-[node name="component_crafter" parent="." unique_id=2043469848 instance=ExtResource("10_f0urj")]
-transform = Transform3D(0.04279256, 0, -0.999084, 0, 1, 0, 0.999084, 0, 0.04279256, -4.5641837, 0.63272023, 4.8997936)
+[node name="window2" type="CSGBox3D" parent="ceilling/mesh" unique_id=2114273493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -161.43298, 0, 233.35541)
+operation = 2
+size = Vector3(289.5686, 1, 498.15918)
 
-[node name="StaticBody3D" parent="." unique_id=1120040833 instance=ExtResource("10_xk83y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5788126, 0.5423176, 11.622847)
+[node name="window5" type="CSGBox3D" parent="ceilling/mesh" unique_id=1431118033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -397.2173, 0, 3.4349976)
+operation = 2
+size = Vector3(158, 1, 958)
+
+[node name="window3" type="CSGBox3D" parent="ceilling/mesh" unique_id=1798808991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 238.36145, 0, 233.35541)
+operation = 2
+size = Vector3(475, 1, 498.15918)
+
+[node name="window4" type="CSGBox3D" parent="ceilling/mesh" unique_id=331956820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 345.46667, 0, -251.73639)
+operation = 2
+size = Vector3(255, 1, 446)
+
+[node name="cover" type="CSGBox3D" parent="ceilling" unique_id=1980926989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.217285, 0, -416.40692)
+size = Vector3(10, 1, 118)
+
+[node name="fixture" parent="." unique_id=255057396 instance=ExtResource("14_qv8os")]
+transform = Transform3D(1, 0, 0, 0, 0.5058826, -0.8626024, 0, 0.8626024, 0.5058826, 2.554978, 29.604477, -14.554775)
+
+[node name="fixture2" parent="." unique_id=1772772623 instance=ExtResource("14_qv8os")]
+transform = Transform3D(-1.1988501e-08, 0.274265, -0.9616543, -1, -4.3711392e-08, 9.7297616e-18, -4.2035243e-08, 0.9616543, 0.274265, 30.977512, 5.5317717, -72.27795)
+
+[node name="OuterSupport" parent="." unique_id=2112553681 instance=ExtResource("14_phqmk")]
 
 [connection signal="value_changed" from="Ingame_Settings/HBoxContainer2/FpsSpinBox" to="Ingame_Settings" method="_on_fps_spin_box_value_changed"]

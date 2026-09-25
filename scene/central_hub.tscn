@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bfp6e1nsoio57"]
+
+[ext_resource type="PackedScene" uid="uid://cg0vda4cap3yy" path="res://scene/Smelter.tscn" id="1_1utp3"]
+[ext_resource type="Material" uid="uid://clsw85sawv4i7" path="res://assets/texture/floor.tres" id="1_g6jdx"]
+[ext_resource type="PackedScene" uid="uid://b42mvuyy0p2lb" path="res://scene/materializer.tscn" id="3_gs3fl"]
+[ext_resource type="PackedScene" uid="uid://cepfj1yxvxv7q" path="res://scene/flex_pipe.tscn" id="4_k8tdj"]
+[ext_resource type="PackedScene" uid="uid://bf5lkgtaj04lq" path="res://scene/unit_assembly.tscn" id="5_66wy4"]
+[ext_resource type="PackedScene" uid="uid://dyqfg5dupaanx" path="res://scene/component_crafter.tscn" id="6_4w0go"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mmmqq"]
+size = Vector2(510, 280)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvmar"]
+size = Vector3(510, 1, 280)
+
+[node name="centralHub" type="Node3D" unique_id=1117179766]
+
+[node name="manufacturingArea" type="Node3D" parent="." unique_id=946868550]
+
+[node name="Smelter" parent="." unique_id=508212594 instance=ExtResource("1_1utp3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 86.80282, 0.003031969, 137.18723)
+
+[node name="floor" type="StaticBody3D" parent="." unique_id=1446735484]
+
+[node name="mesh" type="MeshInstance3D" parent="floor" unique_id=2139675043]
+material_override = ExtResource("1_g6jdx")
+mesh = SubResource("PlaneMesh_mmmqq")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=699828960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.49696803, 0)
+shape = SubResource("BoxShape3D_rvmar")
+
+[node name="Materializer" parent="." unique_id=1142326893 instance=ExtResource("3_gs3fl")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 66.04584, 0.003031969, 133.51907)
+
+[node name="FlexPipe" parent="." unique_id=300330135 instance=ExtResource("4_k8tdj")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 69.322754, 0.97525775, 134.03905)
+
+[node name="unit_assembly" parent="." unique_id=1120040833 instance=ExtResource("5_66wy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.39804, 0.5737059, 121.49084)
+
+[node name="component_crafter" parent="." unique_id=2043469848 instance=ExtResource("6_4w0go")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 88.21235, 0.82896394, 127.02734)

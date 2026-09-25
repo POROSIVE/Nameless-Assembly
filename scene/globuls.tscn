@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://biawy8hkmlta0"]
+
+[ext_resource type="Material" uid="uid://bdyxjqpu6voet" path="res://assets/texture/internalspp.tres" id="1_smbtr"]
+[ext_resource type="PackedScene" uid="uid://b1xjibl7b22u7" path="res://assets/structure/outer_struct_draft.glb" id="2_t3gqa"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mmmqq"]
+flip_faces = true
+radius = 1125.0
+height = 2250.0
+radial_segments = 32
+
+[node name="OuterSupport" type="MeshInstance3D" unique_id=2112553681]
+material_override = ExtResource("1_smbtr")
+cast_shadow = 0
+mesh = SubResource("SphereMesh_mmmqq")
+
+[node name="outer_struct_draft" parent="." unique_id=1098779216 instance=ExtResource("2_t3gqa")]
+transform = Transform3D(1100, 0, 0, 0, 1100, 0, 0, 0, 1100, 0, 0, 0)
