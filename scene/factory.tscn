@@ -6,12 +6,10 @@
 [ext_resource type="Script" uid="uid://3ie6hdys6vsj" path="res://script/interaction_ui.gd" id="4_xk83y"]
 [ext_resource type="PackedScene" uid="uid://dembt2gogk83m" path="res://scene/player.tscn" id="5_ml5ba"]
 [ext_resource type="Script" uid="uid://djs0juffe8ebd" path="res://script/settings_ingame.gd" id="7_2cv5u"]
+[ext_resource type="PackedScene" uid="uid://cjvh15snuw6s0" path="res://scene/audio_stream_player.tscn" id="10_f0urj"]
 [ext_resource type="PackedScene" uid="uid://bfp6e1nsoio57" path="res://scene/central_hub.tscn" id="12_niutn"]
 [ext_resource type="PackedScene" uid="uid://biawy8hkmlta0" path="res://scene/globuls.tscn" id="14_phqmk"]
 [ext_resource type="PackedScene" uid="uid://bundg72jqpyk2" path="res://scene/fixture.tscn" id="14_qv8os"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx4i3"]
-bg_color = Color(0.24780053, 0.24780053, 0.2716998, 0.85)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0urj"]
 bg_color = Color(0.24705882, 0.24705882, 0.27058825, 0.8509804)
@@ -156,33 +154,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InventoryPanel" type="PanelContainer" parent="InteractionUI/HUD" unique_id=1412973384]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_sx4i3")
-
-[node name="MarginContainer" type="MarginContainer" parent="InteractionUI/HUD/InventoryPanel" unique_id=166689042]
-layout_mode = 2
-
-[node name="InventoryColumn" type="VBoxContainer" parent="InteractionUI/HUD/InventoryPanel/MarginContainer" unique_id=875847549]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="InteractionUI/HUD/InventoryPanel/MarginContainer/InventoryColumn" unique_id=339394627]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_sx4i3")
-text = "Inventory"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="InteractionUI/HUD/InventoryPanel/MarginContainer/InventoryColumn" unique_id=1439709906]
-layout_mode = 2
-
-[node name="InventoryList" type="VBoxContainer" parent="InteractionUI/HUD/InventoryPanel/MarginContainer/InventoryColumn" unique_id=1330819927]
-layout_mode = 2
-
 [node name="CraftingPanel" type="PanelContainer" parent="InteractionUI/HUD" unique_id=92942216]
 layout_mode = 1
 anchors_preset = 15
@@ -198,6 +169,13 @@ layout_mode = 2
 [node name="CraftingColumn" type="VBoxContainer" parent="InteractionUI/HUD/CraftingPanel/MarginContainer" unique_id=820560637]
 layout_mode = 2
 
+[node name="HSeparator2" type="HSeparator" parent="InteractionUI/HUD/CraftingPanel/MarginContainer/CraftingColumn" unique_id=500234471]
+layout_mode = 2
+
+[node name="CurrentRecipeLabel" type="Label" parent="InteractionUI/HUD/CraftingPanel/MarginContainer/CraftingColumn" unique_id=1804965533]
+layout_mode = 2
+horizontal_alignment = 1
+
 [node name="CraftingTitle" type="Label" parent="InteractionUI/HUD/CraftingPanel/MarginContainer/CraftingColumn" unique_id=321959891]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_sx4i3")
@@ -208,6 +186,9 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="CraftingList" type="VBoxContainer" parent="InteractionUI/HUD/CraftingPanel/MarginContainer/CraftingColumn" unique_id=1054155166]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="InteractionUI/HUD/CraftingPanel/MarginContainer/CraftingColumn" unique_id=1178432172]
 layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="InteractionUI/HUD/CraftingPanel/MarginContainer/CraftingColumn" unique_id=799443042]
@@ -483,5 +464,7 @@ mesh = SubResource("BoxMesh_sx4i3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -397.2, 100, 3.4)
 material_override = SubResource("StandardMaterial3D_u3286")
 mesh = SubResource("BoxMesh_dkj7w")
+
+[node name="AudioStreamPlayer" parent="." unique_id=783058330 instance=ExtResource("10_f0urj")]
 
 [connection signal="value_changed" from="InteractionUI/Ingame_Settings/HBoxContainer2/FpsSpinBox" to="InteractionUI/Ingame_Settings" method="_on_fps_spin_box_value_changed"]

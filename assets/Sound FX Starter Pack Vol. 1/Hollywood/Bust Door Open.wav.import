@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0lbne1kav0o1"
+path="res://.godot/imported/Bust Door Open.wav-5ac90d304553b4527c196c2c6e6aceb7.sample"
+
+[deps]
+
+source_file="res://assets/Sound FX Starter Pack Vol. 1/Hollywood/Bust Door Open.wav"
+dest_files=["res://.godot/imported/Bust Door Open.wav-5ac90d304553b4527c196c2c6e6aceb7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

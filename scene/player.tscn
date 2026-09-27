@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dembt2gogk83m"]
 
 [ext_resource type="Script" uid="uid://d1fdru67rqkbe" path="res://script/Player.gd" id="1_hjaqi"]
-[ext_resource type="Texture2D" uid="uid://cy2pkagt7yrdg" path="res://assets/crosshairs/crosshair9.png" id="2_fvtld"]
+[ext_resource type="Texture2D" uid="uid://1hrq0ogudy1t" path="res://assets/crosshairs/crosshair8.png" id="2_fvtld"]
 [ext_resource type="Script" uid="uid://timxquwwlfop" path="res://script/PlayerInventory.gd" id="3_fvtld"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ml5ba"]
@@ -9,6 +9,22 @@ radius = 0.55
 height = 2.7
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mmmqq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44c3d"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.42358288, 0.42358288, 0.46135613, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6651851, 0.6651851, 0.7014107, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx4i3"]
 radius = 0.4
@@ -36,7 +52,7 @@ debug_shape_thickness = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Head" unique_id=691522949]
 
-[node name="CenterContainer" type="CenterContainer" parent="Head/CanvasLayer" unique_id=470580684]
+[node name="CrossHair" type="CenterContainer" parent="Head/CanvasLayer" unique_id=470580684]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -50,12 +66,58 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="TextureRect" type="TextureRect" parent="Head/CanvasLayer/CenterContainer" unique_id=909732909]
+[node name="TextureRect" type="TextureRect" parent="Head/CanvasLayer/CrossHair" unique_id=909732909]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("2_fvtld")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="CenterContainer2" type="CenterContainer" parent="Head/CanvasLayer" unique_id=313251490]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -55.0
+offset_right = 200.0
+offset_bottom = -5.0
+
+[node name="HotbarRow" type="HBoxContainer" parent="Head/CanvasLayer/CenterContainer2" unique_id=240971066]
+layout_mode = 2
+
+[node name="Slot1" type="PanelContainer" parent="Head/CanvasLayer/CenterContainer2/HotbarRow" unique_id=787594875]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_44c3d")
+
+[node name="Slot2" type="PanelContainer" parent="Head/CanvasLayer/CenterContainer2/HotbarRow" unique_id=307943280]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_44c3d")
+
+[node name="Slot3" type="PanelContainer" parent="Head/CanvasLayer/CenterContainer2/HotbarRow" unique_id=1735846396]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_44c3d")
+
+[node name="Slot4" type="PanelContainer" parent="Head/CanvasLayer/CenterContainer2/HotbarRow" unique_id=1604628565]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_44c3d")
+
+[node name="Slot5" type="PanelContainer" parent="Head/CanvasLayer/CenterContainer2/HotbarRow" unique_id=570205367]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_44c3d")
+
+[node name="Slot6" type="PanelContainer" parent="Head/CanvasLayer/CenterContainer2/HotbarRow" unique_id=288054432]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_44c3d")
+
+[node name="Slot7" type="PanelContainer" parent="Head/CanvasLayer/CenterContainer2/HotbarRow" unique_id=1336589570]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_44c3d")
+
+[node name="Slot8" type="PanelContainer" parent="Head/CanvasLayer/CenterContainer2/HotbarRow" unique_id=1418873607]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_44c3d")
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=268380724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

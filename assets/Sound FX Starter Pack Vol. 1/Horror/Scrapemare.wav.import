@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c4u00m02gh5gr"
+path="res://.godot/imported/Scrapemare.wav-551629085a5dbcf30dc6067ad9e6f816.sample"
+
+[deps]
+
+source_file="res://assets/Sound FX Starter Pack Vol. 1/Horror/Scrapemare.wav"
+dest_files=["res://.godot/imported/Scrapemare.wav-551629085a5dbcf30dc6067ad9e6f816.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

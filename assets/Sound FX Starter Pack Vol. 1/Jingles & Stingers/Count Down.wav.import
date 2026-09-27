@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://buj634pg4xgij"
+path="res://.godot/imported/Count Down.wav-1d8c688b6c4b81e6dad08c798951275a.sample"
+
+[deps]
+
+source_file="res://assets/Sound FX Starter Pack Vol. 1/Jingles & Stingers/Count Down.wav"
+dest_files=["res://.godot/imported/Count Down.wav-1d8c688b6c4b81e6dad08c798951275a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

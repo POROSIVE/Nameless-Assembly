@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://gmrqi1rj1egp"
+path="res://.godot/imported/Steampunk Gun.wav-c9465c7012fc9bac963e579d7998e48a.sample"
+
+[deps]
+
+source_file="res://assets/Sound FX Starter Pack Vol. 1/Steampunk/Steampunk Gun.wav"
+dest_files=["res://.godot/imported/Steampunk Gun.wav-c9465c7012fc9bac963e579d7998e48a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

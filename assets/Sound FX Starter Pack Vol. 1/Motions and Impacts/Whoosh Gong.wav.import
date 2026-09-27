@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dne6r2wsctxjm"
+path="res://.godot/imported/Whoosh Gong.wav-8ec2abe54b5f3ca0b75a7802f449f256.sample"
+
+[deps]
+
+source_file="res://assets/Sound FX Starter Pack Vol. 1/Motions and Impacts/Whoosh Gong.wav"
+dest_files=["res://.godot/imported/Whoosh Gong.wav-8ec2abe54b5f3ca0b75a7802f449f256.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

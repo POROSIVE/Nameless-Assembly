@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cjvh15snuw6s0"]
+
+[ext_resource type="AudioStream" uid="uid://b6a0kyxqif7fn" path="res://assets/Sound FX Starter Pack Vol. 1/Sci-Fi/Outer Space Scanner Loop.wav" id="1_jlyyb"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=783058330]
+stream = ExtResource("1_jlyyb")
+volume_db = 0.25
+autoplay = true
+playback_type = 1

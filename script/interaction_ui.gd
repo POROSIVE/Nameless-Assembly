@@ -1,4 +1,16 @@
 extends CanvasLayer
+
+const ITEM_COLORS := {
+	"steel_ingot": Color(0.6, 0.6, 0.62),
+	"unobtanium_powder": Color(0.6, 0.3, 0.8),
+	"resin": Color(0.7, 0.5, 0.2),
+	"copper_wire": Color(0.8, 0.4, 0.1),
+	"circuit_board": Color(0.2, 0.6, 0.3),
+	"ammo_backplate_0_steel": Color(0.4, 0.4, 0.42),
+	"ammo_shell_0_steel": Color(0.45, 0.45, 0.47),
+	"ammo_propellant_0_standard": Color(0.8, 0.7, 0.2),
+	"ammo_payload_0_standard": Color(0.7, 0.2, 0.2),
+}
 signal  crafting_opened()
 signal crafting_closed()
 
@@ -6,12 +18,17 @@ var player: Node
 var inventory: PlayerInventory
 var current_crafter: ComponentCrafter
 
-@onready var inventory_panel: PanelContainer = $HUD/InventoryPanel
-@onready var inventory_list: VBoxContainer = $HUD/InventoryPanel/MarginContainer/InventoryColumn/InventoryList
+
 @onready var crafting_panel: PanelContainer = $HUD/CraftingPanel
 @onready var crafting_title: Label = $HUD/CraftingPanel/MarginContainer/CraftingColumn/CraftingTitle
 @onready var crafting_list: VBoxContainer = $HUD/CraftingPanel/MarginContainer/CraftingColumn/CraftingList
 @onready var close_button: Button = $HUD/CraftingPanel/MarginContainer/CraftingColumn/CloseButton
+
+var current_recipe_label: Label = null
+var crafting_progress: ProgressBar = null
+
+var _icon_gen: ItemIcon
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_inventory"):
@@ -22,8 +39,17 @@ func _unhandled_input(event: InputEvent) -> void:
 func _ready() -> void:
 	add_to_group("interaction_ui")
 	crafting_panel.hide()
-	inventory_panel.hide()
 	close_button.pressed.connect(close_crafter)
+	_find_crafting_nodes()
+	_icon_gen = ItemIcon.new()
+	
+func _find_crafting_nodes() -> void:
+	var column := get_node_or_null("HUD/CraftingPanel/MarginContainer/CraftingColumn")
+	if column == null:
+		return
+	current_recipe_label = column.get_node_or_null("CurrentRecipeLabel")
+	crafting_progress = column.get_node_or_null("ProgressBar")
+		
 	player = get_tree().get_first_node_in_group("player")
 
 # Opening the crafting window also releases the mouse so the player can interact with buttons instead of continuing to control the camera
@@ -41,9 +67,19 @@ func open_crafter(
 		inventory.inventory_changed.connect(_on_inventory_changed)
 	crafting_panel.visible = true
 	crafting_opened.emit()
+	if crafter.has_signal("crafting_started") and not crafter.crafting_started.is_connected(_on_crafting_started):
+		crafter.crafting_started.connect(_on_crafting_started)
+	if crafter.has_signal("crafting_updated") and not crafter.crafting_updated.is_connected(_on_crafting_updated):
+		crafter.crafting_updated.connect(_on_crafting_updated)
+	if crafter.has_signal("crafting_finished") and not crafter.crafting_finished.is_connected(_on_crafting_finished):
+		crafter.crafting_finished.connect(_on_crafting_finished)
+		
 	crafting_title.text = crafter.display_name.to_upper()
-	_refresh_inventory()
+	if player.has_method("_refresh_hotbar"):
+		player._refresh_hotbar()
 	_refresh_crafting_list()
+	current_recipe_label.text = ""
+	crafting_progress.value = 0
 	
 	if player.has_method("release_mouse"):
 		player.release_mouse()
@@ -60,56 +96,14 @@ func close_crafter() -> void:
 		player.capture_mouse()
 
 func toggle_inventory() -> void:
-	if inventory == null:
-		var player_node := get_tree().get_first_node_in_group("player")
-
-		if player_node != null and player_node.has_method("_get_inventory"):
-			inventory = player_node._get_inventory(player_node)
-
-	inventory_panel.visible = not inventory_panel.visible
-
-	if inventory_panel.visible:
-		_refresh_inventory()
-
-
-func _refresh_inventory() -> void:
-	if inventory_list == null:
+	var player_node := get_tree().get_first_node_in_group("player")
+	if player_node == null:
 		return
+	if player_node.has_method("_refresh_hotbar"):
+		player_node._refresh_hotbar()
 
-	for child in inventory_list.get_children():
-		child.queue_free()
 
-	if inventory == null:
-		var missing_label := Label.new()
-		missing_label.text = "NO INVENTORY"
-		inventory_list.add_child(missing_label)
-		return
 
-	var contents: Dictionary = inventory.snapshot()
-
-	if contents.is_empty():
-		var empty_label := Label.new()
-		empty_label.text = "Inventory empty"
-		inventory_list.add_child(empty_label)
-		return
-
-	var item_ids: Array = contents.keys()
-	item_ids.sort()
-
-	for item_id in item_ids:
-		var amount: int = int(contents[item_id])
-		if amount <= 0:
-			continue
-
-		var row := HBoxContainer.new()
-		var item_label := Label.new()
-		item_label.text = _pretty_item_name(String(item_id))
-		item_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var amount_label := Label.new()
-		amount_label.text = str(amount)
-		row.add_child(item_label)
-		row.add_child(amount_label)
-		inventory_list.add_child(row)
 
 func _refresh_crafting_list() -> void:
 	if crafting_list == null:
@@ -141,18 +135,37 @@ func _refresh_crafting_list() -> void:
 			lookup
 		)
 		var recipe_button := Button.new()
-		recipe_button.custom_minimum_size = Vector2(0, 76)
+		recipe_button.custom_minimum_size = Vector2(0,76)
 		recipe_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		recipe_button.text = "%s\n%s  →  %s  |  %.1fs" % [
-			recipe_name,
-			inputs_text,
-			outputs_text,
-			craft_time
-		]
 		recipe_button.disabled = not can_craft
-		recipe_button.pressed.connect(
-			_on_recipe_pressed.bind(recipe_id)
-		)
+		
+		var inputs_row := HBoxContainer.new()
+		for inp in recipe.get("inputs", []):
+			inputs_row.add_child(_item_icon(String(inp["item"]), int(inp["amount"])))
+		var arrow := Label.new()
+		arrow.text = "->"
+		arrow.add_theme_font_size_override("font_size", 24)
+		var outputs_row = HBoxContainer.new()
+		for out in recipe.get("outputs", []):
+			outputs_row.add_child(_item_icon(String(out["item"]), int(out["amount"])))
+		
+		var middle = HBoxContainer.new()
+		middle.add_child(arrow)
+		
+		var details := VBoxContainer.new()
+		details.add_child(inputs_row)
+		details.add_child(middle)
+		details.add_child(outputs_row)
+		
+		var outer :=  VBoxContainer.new()
+		outer.add_child(details)
+		var time_label := Label.new()
+		time_label.text = "%.1fs" % craft_time
+		time_label.add_theme_font_size_override("font_size", 12)
+		outer.add_child(time_label)
+		
+		recipe_button.add_child(outer)
+		recipe_button.pressed.connect(_on_recipe_pressed.bind(recipe_id))
 		crafting_list.add_child(recipe_button)
 
 func _on_recipe_pressed(recipe_id: String) -> void:
@@ -163,14 +176,18 @@ func _on_recipe_pressed(recipe_id: String) -> void:
 		player
 	)
 	if success:
-		_refresh_inventory()
+		if player.has_method("_refresh_hotbar"):
+			player._refresh_hotbar()
 		_refresh_crafting_list()
 
 func _on_inventory_changed(
 	_item_id: String,
 	_new_amount: int
 ) -> void:
-	_refresh_inventory()
+	if player != null and player.has_method("_refresh_hotbar"):
+		player._refresh_hotbar()
+		
+		
 
 	if crafting_panel.visible:
 		_refresh_crafting_list()
@@ -219,3 +236,53 @@ func _on_cancel_pressed() -> void:
 		player.capture_mouse()
 		
 		
+func _on_crafting_started(recipe: Dictionary, total_time: float) -> void:
+	var name := String(recipe.get("display_name", recipe.get("id", "?")))
+	current_recipe_label.text = "Crafting: %s" % name
+	crafting_progress.max_value = total_time
+	
+func _on_crafting_updated(time_left: float) -> void:
+	crafting_progress.value = time_left
+	
+func _on_crafting_finished(outputs: Array) -> void:
+	current_recipe_label.text = "Done!"
+	crafting_progress.value = 0
+	
+	
+func _item_color(item_id: String) -> Color:
+	return ITEM_COLORS.get(item_id, Color(0.5 , 0.5, 0.5))
+	
+func _item_icon(item_id: String, amount: int) -> Control:
+	var color := _item_color(item_id)
+	var panel := PanelContainer.new()
+	panel.custom_minimum_size = Vector2(36, 36)
+	
+	var border_panel := PanelContainer.new()
+	var border_style := StyleBoxFlat.new()
+	border_style.bg_color = color
+	border_panel.add_theme_stylebox_override("panel", border_style)
+	
+	var inner := PanelContainer.new()
+	inner.custom_minimum_size = Vector2(30, 30)
+	var fill_style := StyleBoxFlat.new()
+	fill_style.bg_color = color.darkened(0.55)
+	inner.add_theme_stylebox_override("panel", fill_style)
+	
+	border_panel.add_child(inner)
+	panel.add_child(border_panel)
+
+
+	var label := Label.new()
+	label.text = str(amount)
+	label.add_theme_font_size_override("font_size", 14)
+	label.add_theme_color_override("font_color", Color(1, 1, 1))
+	
+	var row := HBoxContainer.new()
+	row.add_child(panel)
+	row.add_child(label)
+	return row
+	
+	
+	
+	
+	
