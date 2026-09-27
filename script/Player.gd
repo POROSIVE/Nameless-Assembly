@@ -32,20 +32,30 @@ var current_cam_y: float = 0.0
 var grabbed_hose = null
 var grabbed_end := ""
 
+var crafting_open: bool = false
+
 @export var settings_menu: Control
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var interaction_ray: RayCast3D = $Head/Camera3D/InteractionRay
 @onready var original_cam_y: float = $Head/Camera3D.position.y
 
+
 func _ready() -> void:
 	add_to_group("player")
-#	all player inpt
-	capture_mouse()
-	current_cam_y = original_cam_y
-	var focused_node = get_viewport().gui_get_focus_owner()
-	if focused_node:
-		focused_node.release_focus()
+	await get_tree().process_frame
+	var ui := get_tree().get_first_node_in_group("interaction_ui")
+	if ui != null:
+		if ui.has_signal("crafting_opened"):
+			ui.crafting_opened.connect(_on_crafting_opened)
+		if ui.has_signal("crafting_closed"):
+			ui.crafting_closed.connect(_on_crafting_closed)
+		capture_mouse()
+		current_cam_y = original_cam_y
+		var focused_node = get_viewport().gui_get_focus_owner()
+		if focused_node:
+			focused_node.release_focus()
+		
 		
 func _unhandled_input(event: InputEvent) -> void:
 	if mouse_captured and event is InputEventMouseMotion:
@@ -67,6 +77,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			release_hose()
 
 func _physics_process(delta: float) -> void:
+	if crafting_open:
+		velocity = Vector3.ZERO
+		return
 	handle_crouch(delta)
 	
 	# Add the gravity.
@@ -293,4 +306,14 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2.0) * BOB_AMP
 	return pos
+		
+		
+func _on_crafting_opened() -> void:
+	crafting_open = true
 	
+func _on_crafting_closed() -> void:
+	crafting_open = false
+	
+
+		
+		

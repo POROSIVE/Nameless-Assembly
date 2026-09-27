@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dembt2gogk83m"]
 
 [ext_resource type="Script" uid="uid://d1fdru67rqkbe" path="res://script/Player.gd" id="1_hjaqi"]
-[ext_resource type="Texture2D" uid="uid://61or2c61pnwy" path="res://assets/crosshairs/crosshair0.png" id="2_fvtld"]
+[ext_resource type="Texture2D" uid="uid://cy2pkagt7yrdg" path="res://assets/crosshairs/crosshair9.png" id="2_fvtld"]
 [ext_resource type="Script" uid="uid://timxquwwlfop" path="res://script/PlayerInventory.gd" id="3_fvtld"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ml5ba"]

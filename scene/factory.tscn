@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dfbjktltfbw5q" path="res://script/global.gd" id="1_ml5ba"]
 [ext_resource type="Texture2D" uid="uid://c82lawh5rw00p" path="res://assets/layout.png" id="3_ml5ba"]
-[ext_resource type="FontFile" uid="uid://bebnno8fsoe44" path="res://assets/Corpta DEMO.otf" id="3_sx4i3"]
+[ext_resource type="FontFile" uid="uid://bebnno8fsoe44" path="res://assets/fonts/Corpta DEMO.otf" id="3_sx4i3"]
 [ext_resource type="Script" uid="uid://3ie6hdys6vsj" path="res://script/interaction_ui.gd" id="4_xk83y"]
 [ext_resource type="PackedScene" uid="uid://dembt2gogk83m" path="res://scene/player.tscn" id="5_ml5ba"]
 [ext_resource type="Script" uid="uid://djs0juffe8ebd" path="res://script/settings_ingame.gd" id="7_2cv5u"]
@@ -141,121 +141,6 @@ size = Vector3(156, 0.05, 956)
 [node name="main" type="Node3D" unique_id=1121479232]
 script = ExtResource("1_ml5ba")
 
-[node name="Ingame_Settings" type="Control" parent="." unique_id=324884305]
-custom_minimum_size = Vector2(700, 500)
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = -250.0
-offset_right = 350.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-layout_direction = 1
-script = ExtResource("7_2cv5u")
-
-[node name="ColorRect" type="ColorRect" parent="Ingame_Settings" unique_id=712764476]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.24780053, 0.24780053, 0.2716998, 0.85)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Ingame_Settings" unique_id=893024618]
-z_index = 2
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 0
-offset_left = 248.0
-offset_top = 157.0
-offset_right = 448.0
-offset_bottom = 200.0
-alignment = 1
-
-[node name="Label" type="Label" parent="Ingame_Settings/VBoxContainer" unique_id=670566738]
-z_index = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_sx4i3")
-theme_override_font_sizes/font_size = 22
-text = "Volume"
-
-[node name="VolumeSlider" type="HSlider" parent="Ingame_Settings/VBoxContainer" unique_id=155910967]
-z_index = 1
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Ingame_Settings" unique_id=363831470]
-z_index = 2
-layout_mode = 0
-offset_left = 248.0
-offset_top = 221.0
-offset_right = 376.0
-offset_bottom = 261.0
-
-[node name="Label" type="Label" parent="Ingame_Settings/HBoxContainer" unique_id=1271261513]
-z_index = 1
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("3_sx4i3")
-text = "Vsync"
-
-[node name="VsyncCheckBox" type="CheckBox" parent="Ingame_Settings/HBoxContainer" unique_id=1405270154]
-z_index = 1
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Ingame_Settings" unique_id=1503896687]
-z_index = 2
-layout_mode = 0
-offset_left = 248.0
-offset_top = 284.0
-offset_right = 438.0
-offset_bottom = 324.0
-
-[node name="Label" type="Label" parent="Ingame_Settings/HBoxContainer2" unique_id=1843139740]
-z_index = 1
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("3_sx4i3")
-text = "Max FPS"
-
-[node name="FpsSpinBox" type="SpinBox" parent="Ingame_Settings/HBoxContainer2" unique_id=327516249]
-z_index = 1
-layout_mode = 2
-min_value = 30.0
-max_value = 999.0
-value = 30.0
-rounded = true
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="Ingame_Settings" unique_id=1033295338]
-z_index = 2
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -148.0
-offset_right = 150.0
-offset_bottom = -117.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="savebtn" type="Button" parent="Ingame_Settings/VBoxContainer3" unique_id=578777304]
-z_index = 1
-layout_mode = 2
-text = "SAVE"
-
 [node name="InteractionUI" type="CanvasLayer" parent="." unique_id=554800473]
 follow_viewport_enabled = true
 script = ExtResource("4_xk83y")
@@ -329,6 +214,122 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_sx4i3")
 text = "Close"
+
+[node name="Ingame_Settings" type="Control" parent="InteractionUI" unique_id=324884305]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+layout_direction = 1
+script = ExtResource("7_2cv5u")
+
+[node name="ColorRect" type="ColorRect" parent="InteractionUI/Ingame_Settings" unique_id=712764476]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24780053, 0.24780053, 0.2716998, 0.85)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InteractionUI/Ingame_Settings" unique_id=893024618]
+z_index = 2
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 248.0
+offset_top = 157.0
+offset_right = 448.0
+offset_bottom = 200.0
+alignment = 1
+
+[node name="Label" type="Label" parent="InteractionUI/Ingame_Settings/VBoxContainer" unique_id=670566738]
+z_index = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_sx4i3")
+theme_override_font_sizes/font_size = 22
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="InteractionUI/Ingame_Settings/VBoxContainer" unique_id=155910967]
+z_index = 1
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InteractionUI/Ingame_Settings" unique_id=363831470]
+z_index = 2
+layout_mode = 0
+offset_left = 248.0
+offset_top = 221.0
+offset_right = 376.0
+offset_bottom = 261.0
+
+[node name="Label" type="Label" parent="InteractionUI/Ingame_Settings/HBoxContainer" unique_id=1271261513]
+z_index = 1
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_sx4i3")
+text = "Vsync"
+
+[node name="VsyncCheckBox" type="CheckBox" parent="InteractionUI/Ingame_Settings/HBoxContainer" unique_id=1405270154]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="InteractionUI/Ingame_Settings" unique_id=1503896687]
+z_index = 2
+layout_mode = 0
+offset_left = 248.0
+offset_top = 284.0
+offset_right = 438.0
+offset_bottom = 324.0
+
+[node name="Label" type="Label" parent="InteractionUI/Ingame_Settings/HBoxContainer2" unique_id=1843139740]
+z_index = 1
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_sx4i3")
+text = "Max FPS"
+
+[node name="FpsSpinBox" type="SpinBox" parent="InteractionUI/Ingame_Settings/HBoxContainer2" unique_id=327516249]
+z_index = 1
+layout_mode = 2
+min_value = 30.0
+max_value = 999.0
+value = 30.0
+rounded = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="InteractionUI/Ingame_Settings" unique_id=1033295338]
+z_index = 2
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -148.0
+offset_right = 150.0
+offset_bottom = -117.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="savebtn" type="Button" parent="InteractionUI/Ingame_Settings/VBoxContainer3" unique_id=578777304]
+z_index = 1
+layout_mode = 2
+text = "SAVE"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=616118742]
 environment = SubResource("Environment_wp4xf")
@@ -483,4 +484,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -397.2, 100, 3.4)
 material_override = SubResource("StandardMaterial3D_u3286")
 mesh = SubResource("BoxMesh_dkj7w")
 
-[connection signal="value_changed" from="Ingame_Settings/HBoxContainer2/FpsSpinBox" to="Ingame_Settings" method="_on_fps_spin_box_value_changed"]
+[connection signal="value_changed" from="InteractionUI/Ingame_Settings/HBoxContainer2/FpsSpinBox" to="InteractionUI/Ingame_Settings" method="_on_fps_spin_box_value_changed"]

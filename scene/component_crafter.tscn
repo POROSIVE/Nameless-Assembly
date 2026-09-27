@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dyqfg5dupaanx"]
 
 [ext_resource type="Script" uid="uid://c2ocnja3843al" path="res://script/ComponentCrafter.gd" id="1_e7i8x"]
-[ext_resource type="FontFile" uid="uid://bebnno8fsoe44" path="res://assets/Corpta DEMO.otf" id="2_yr1wp"]
+[ext_resource type="FontFile" uid="uid://bebnno8fsoe44" path="res://assets/fonts/Corpta DEMO.otf" id="2_yr1wp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_44c3d"]
 
@@ -18,10 +18,14 @@ size = Vector3(0.39831543, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_niutn"]
 size = Vector3(0.30963135, 1, 1.3354492)
 
+[sub_resource type="BoxMesh" id="BoxMesh_44c3d"]
+size = Vector3(1.664, 1.747, 0.1798584)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_44c3d"]
 size = Vector3(2.36969, 1.5, 1.5292969)
 
 [node name="component_crafter" type="Node3D" unique_id=2043469848]
+transform = Transform3D(2.2355247, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="ComponentCrafter" type="StaticBody3D" parent="." unique_id=1168446345]
 physics_material_override = SubResource("PhysicsMaterial_44c3d")
@@ -41,6 +45,19 @@ mesh = SubResource("BoxMesh_xk83y")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="ComponentCrafter" unique_id=1265105887]
 transform = Transform3D(-4.3711385e-08, -1.6518639, 0, 0.9999999, -7.220527e-08, 0, 0, 0, 1.6727957, 0.03143263, 0.5425004, -0.280569)
 mesh = SubResource("BoxMesh_niutn")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="ComponentCrafter" unique_id=136162953]
+transform = Transform3D(-0.99991506, 0, 0.013029293, 0, 1, 0, -0.013029294, 0, -0.9999151, 0.035461426, 1.4761829, 0.67326725)
+mesh = SubResource("BoxMesh_44c3d")
+
+[node name="Label3D" type="Label3D" parent="ComponentCrafter/MeshInstance3D5" unique_id=1485783021]
+transform = Transform3D(0.5499057, 0, 0, 0, 2.4646263, 0, 0, 0, 1.0438974, 0.007405039, 0.74570775, 0.26916158)
+modulate = Color(0, 0, 0, 1)
+text = "Component Crafter"
+font = ExtResource("2_yr1wp")
+font_size = 45
+outline_size = 1
+vertical_alignment = 0
 
 [node name="Collision" type="CollisionShape3D" parent="ComponentCrafter" unique_id=928350769]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0066833496, 0, -0.26464844)

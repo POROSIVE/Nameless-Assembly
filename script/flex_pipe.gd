@@ -30,30 +30,36 @@ var old_mesh: ArrayMesh
 
 
 func _ready() -> void:
+	if not is_inside_tree():
+		call_deferred("_setup_hose")
+		return
+	_setup_hose()
+	
+func _setup_hose() -> void:
 	if start_handle == null:
 		start_handle = $StartHandle
-
+		
 	if end_handle == null:
 		end_handle = $EndHandle
-
+		
 	if start_detector == null:
 		start_detector = $StartHandle/StartDetector
 
 	if end_detector == null:
 		end_detector = $EndHandle/EndDetector
-
+		
 	if pipe_mesh == null:
 		pipe_mesh = $PipeMesh
-
+		
+	if start_handle == null or end_handle == null or pipe_mesh == null:
+		push_error("flex_pipe: missing required child nodes (StartHand/EndHandle/PipeMesh)")
+		return
+		
 	start_detector.area_entered.connect(_on_start_detector_area_entered)
-	start_detector.area_exited.connect(_on_start_detector_area_exited)
-
-	end_detector.area_entered.connect(_on_end_detector_area_entered)
-	end_detector.area_exited.connect(_on_end_detector_area_exited)
-
+	end_detector.area_exited.connect(_on_start_detector_area_exited)
+	
 	initialize_hose()
 	update_pipe_mesh()
-
 
 func initialize_hose() -> void:
 	points = PackedVector3Array()

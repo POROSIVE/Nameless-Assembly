@@ -1,4 +1,6 @@
 extends CanvasLayer
+signal  crafting_opened()
+signal crafting_closed()
 
 var player: Node
 var inventory: PlayerInventory
@@ -33,16 +35,26 @@ func open_crafter(
 	current_crafter = crafter
 	inventory = inv
 	player = player_node
+	if not inventory.inventory_changed.is_connected(
+		_on_inventory_changed
+	):
+		inventory.inventory_changed.connect(_on_inventory_changed)
 	crafting_panel.visible = true
+	crafting_opened.emit()
 	crafting_title.text = crafter.display_name.to_upper()
 	_refresh_inventory()
 	_refresh_crafting_list()
+	
 	if player.has_method("release_mouse"):
 		player.release_mouse()
 
 # returns control
 func close_crafter() -> void:
+	if current_crafter != null and current_crafter.has_method("cancel_craft"):
+		if current_crafter._is_crafting:
+			current_crafter.cancel_craft()
 	crafting_panel.visible = false
+	crafting_closed.emit()
 	current_crafter = null
 	if player != null and player.has_method("capture_mouse"):
 		player.capture_mouse()
@@ -193,3 +205,17 @@ func _format_outputs(outputs: Array) -> String:
 	
 func _pretty_item_name(item_id: String) -> String:
 	return item_id.replace("_", " ").capitalize()
+
+
+
+	
+func _on_cancel_pressed() -> void:
+	if current_crafter != null and current_crafter.has_method("cancel_craft"):
+		current_crafter.cancel_craft()
+	crafting_panel.visible = false
+	if player != null and player.has_method(
+		"capture_mouse"
+	):
+		player.capture_mouse()
+		
+		

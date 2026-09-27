@@ -33,21 +33,15 @@ func interact(player: Node) -> void:
 		return
 
 	if _is_crafting:
-		var recipe_name := String(
-			_active_recipe.get(
-				"display_name",
-				_active_recipe.get("id", "?")
-			)
-		)
-		print(
-			"[%s] Busy crafting %s (%.1fs left)"
-			% [display_name, recipe_name, _craft_timer]
-		)
+		var ui := get_tree().get_first_node_in_group("interaction_ui")
+		if ui != null and ui.has_method("open_crafter"):
+			ui.open_crafter(self, inv, player)
+			return
 		return
 
-	var ui := get_tree().get_first_node_in_group("interaction_ui")
-	if ui != null and ui.has_method("open_crafter"):
-		ui.open_crafter(self, inv, player)
+	var interaction_ui := get_tree().get_first_node_in_group("interaction_ui")
+	if interaction_ui != null and interaction_ui.has_method("open_crafter"):
+		interaction_ui.open_crafter(self, inv, player)
 		return
 
 	var recipe := _pick_recipe(inv)
@@ -106,6 +100,21 @@ func craft_recipe(recipe_id_to_craft: String, player: Node) -> bool:
 		return false
 	_start_craft(recipe, inv)
 	return true
+
+func cancel_craft() -> void:
+	if not _is_crafting:
+		return
+	#refund the inputs
+	if is_instance_valid(_crafting_player):
+		for entry in _active_recipe["inputs"]:
+			_crafting_player.add(entry["item"], int(entry["amount"]))
+	_is_crafting = false
+	_active_recipe = {}
+	_crafting_player = null
+	_craft_timer = 0.0
+	_update_prompt()
+	crafting_finished.emit({},[])
+	
 
 func _finish_craft() -> void: 
 	var recipe := _active_recipe

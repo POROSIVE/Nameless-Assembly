@@ -11,6 +11,7 @@ func _ready():
 
 func _start_btn_pressed():
 	get_tree().change_scene_to_file("res://scene/factory.tscn")
+	print("Start pressed")
 	
 func _settings_btn_pressed():
 	start_menu.hide()

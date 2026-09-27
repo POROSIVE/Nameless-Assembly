@@ -1,6 +1,6 @@
 extends Control
 
-@onready var player: Node3D = $"../Player"
+@onready var player: Node3D = $"../../Player"
 @onready var volume_slider = $VBoxContainer/VolumeSlider
 @onready var vsync_checkbox = $HBoxContainer/VsyncCheckBox
 @onready var fps_spinbox = $HBoxContainer2/FpsSpinBox
@@ -28,10 +28,10 @@ func _on_volume_changed(value: float) -> void:
 func _on_vsync_toggled(pressed: bool) -> void:
 	if pressed:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+		print("button pressed")
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	save_settings()
-
 
 func _on_fps_spin_box_value_changed(value: float) -> void:
 	Engine.max_fps = int(value)
