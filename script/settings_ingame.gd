@@ -71,7 +71,7 @@ func load_settings() -> void:
 	else:
 		# Defaults if no config file
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-		Engine.max_fps = 1000
+		Engine.max_fps = 60
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 0.0)
 
 func save_object_data(obj: Node3D, filename: String = "obj_data.json") -> void:

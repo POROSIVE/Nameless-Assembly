@@ -37,6 +37,7 @@ project/assembly_name="Nameless Assembly"
 
 [editor]
 
+movie_writer/fps=120
 version_control/autoload_on_startup=true
 
 [editor_plugins]

@@ -1,11 +1,11 @@
 extends Node3D
 
 @export_category("Hose Settings")
-@export var point_count: int = 30
+@export var point_count: int = 16
 @export var hose_length: float = 1.0
 @export var hose_radius: float = 0.3
 @export var tube_sides: int = 16
-@export var simulation_iterations: int = 8
+@export var simulation_iterations: int = 4
 @export var gravity: Vector3 = Vector3(0.0, -9.8, 0.0)
 @export var damping: float = 0.985
 
@@ -19,6 +19,8 @@ extends Node3D
 
 var points: PackedVector3Array
 var previous_points: PackedVector3Array
+var mesh_dirty: bool = true
+
 
 var start_connected: bool = false
 var end_connected: bool = false
@@ -68,22 +70,30 @@ func initialize_hose() -> void:
 		points.append(point)
 		previous_points.append(point)
 
-
 func _physics_process(delta: float) -> void:
 	if is_locked:
 		return
 
-	simulate_hose(delta)
-	update_pipe_mesh()
+	var moved := simulate_hose(delta)
+	if moved or mesh_dirty:
+		update_pipe_mesh()
+		mesh_dirty = false
 
 
-func simulate_hose(delta: float) -> void:
+func simulate_hose(delta: float) -> bool:
 	if point_count < 3:
-		return
+		return false
 
 	var start_position: Vector3 = to_local(start_handle.global_position)
 	var end_position: Vector3 = to_local(end_handle.global_position)
 
+	var any_moved := false
+	if start_position != points[0] or end_position != points[point_count - 1]:
+		any_moved = true
+		
+	if not any_moved:
+		return false
+		
 	var point_spacing: float = hose_length / float(point_count - 1)
 
 	# Move the internal points using Verlet integration.
@@ -139,6 +149,7 @@ func simulate_hose(delta: float) -> void:
 	# Make sure both ends exactly follow their handles.
 	points[0] = start_position
 	points[point_count - 1] = end_position
+	return true
 
 
 func update_pipe_mesh() -> void:
@@ -291,6 +302,7 @@ func lock_hose() -> void:
 	start_handle.set_meta("can_be_grabbed", false)
 	end_handle.set_meta("can_be_grabbed", false)
 
+	mesh_dirty = true
 	update_pipe_mesh()
 	create_locked_collision()
 
@@ -367,6 +379,8 @@ func move_start_handle(world_position: Vector3) -> void:
 	if not start_handle.is_inside_tree():
 		return
 	start_handle.global_position = world_position
+	mesh_dirty = true
+	
 
 func move_end_handle(world_position: Vector3) -> void:
 	if is_locked:
@@ -376,6 +390,7 @@ func move_end_handle(world_position: Vector3) -> void:
 	if not end_handle.is_inside_tree():
 		return
 	end_handle.global_position = world_position
+	mesh_dirty = true
 
 func snap_start_to_dock(dock: Node3D) -> void:
 	if not is_instance_valid(dock):
