@@ -32,21 +32,89 @@ var current_cam_y: float = 0.0
 var grabbed_hose = null
 var grabbed_end := ""
 
+var crafting_open: bool = false
+
 @export var settings_menu: Control
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var interaction_ray: RayCast3D = $Head/Camera3D/InteractionRay
 @onready var original_cam_y: float = $Head/Camera3D.position.y
 
+@onready var hotbar_row: HBoxContainer = $Head/CanvasLayer/CenterContainer2/HotbarRow
+var hotbar_slots: Array = []
+var selected_slot: int = -1
+
+const ITEM_COLORS := {
+	"steel_ingot": Color(0.6, 0.6, 0.62),
+	"unobtanium_powder": Color(0.6, 0.3, 0.8),
+	"resin": Color(0.7, 0.5, 0.2),
+	"copper_wire": Color(0.8, 0.4, 0.1),
+	"circuit_board": Color(0.2, 0.6, 0.3),
+	"ammo_backplate_0_steel": Color(0.4, 0.4, 0.42),
+	"ammo_shell_0_steel": Color(0.45, 0.45, 0.47),
+	"ammo_propellant_0_standard": Color(0.8, 0.7, 0.2),
+	"ammo_payload_0_standard": Color(0.7, 0.2, 0.2),
+}
+
+
 func _ready() -> void:
 	add_to_group("player")
-#	all player inpt
-	capture_mouse()
-	current_cam_y = original_cam_y
-	var focused_node = get_viewport().gui_get_focus_owner()
-	if focused_node:
-		focused_node.release_focus()
+	await get_tree().process_frame
+	var ui := get_tree().get_first_node_in_group("interaction_ui")
+	if ui != null:
+		if ui.has_signal("crafting_opened"):
+			ui.crafting_opened.connect(_on_crafting_opened)
+		if ui.has_signal("crafting_closed"):
+			ui.crafting_closed.connect(_on_crafting_closed)
+		capture_mouse()
+		for slot in hotbar_row.get_children():
+			hotbar_slots.append(slot)
+		_refresh_hotbar()
+		current_cam_y = original_cam_y
+		var focused_node = get_viewport().gui_get_focus_owner()
+		if focused_node:
+			focused_node.release_focus()
+			
+			
+func _item_color(item_id: String) -> Color:
+	return ITEM_COLORS.get(item_id, Color(0.5 , 0.5, 0.5))
+	
+	
+func _refresh_hotbar() -> void:
+	var inv = _get_inventory(self)
+	if inv == null:
+		return
+	var contents = inv.snapshot()
+	var item_ids: Array = contents.keys()
+	item_ids.sort()
+	for i in range(hotbar_slots.size()):
+		var slot = hotbar_slots[i]
+		for child in slot.get_children():
+			child.queue_free()
+		if i < item_ids.size():
+			var id = String(item_ids[i])
+			var amount = int(contents[id])
+			if amount > 0:
+				var color = _item_color(id)
+				var bg = PanelContainer.new()
+				bg.custom_minimum_size = Vector2(40, 40)
+				var style = StyleBoxFlat.new()
+				style.bg_color = color.darkened(0.5)
+				style.corner_radius_bottom_left = 3
+				style.corner_radius_bottom_right = 3
+				style.corner_radius_top_left = 3
+				style.corner_radius_top_right = 3
+				bg.add_theme_stylebox_override("panel", style)
+				slot.add_child(bg)
+				var amt = Label.new()
+				amt.text = str(amount)
+				amt.position = Vector2(28, 28)
+				amt.add_theme_font_size_override("font_size", 14)
+				amt.add_theme_color_override("font_color", Color(1,1,1))
+				slot.add_child(amt)
+	
 		
+
 func _unhandled_input(event: InputEvent) -> void:
 	if mouse_captured and event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
@@ -67,6 +135,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			release_hose()
 
 func _physics_process(delta: float) -> void:
+	if crafting_open:
+		velocity = Vector3.ZERO
+		return
 	handle_crouch(delta)
 	
 	# Add the gravity.
@@ -293,4 +364,14 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2.0) * BOB_AMP
 	return pos
+		
+		
+func _on_crafting_opened() -> void:
+	crafting_open = true
 	
+func _on_crafting_closed() -> void:
+	crafting_open = false
+	
+
+		
+		

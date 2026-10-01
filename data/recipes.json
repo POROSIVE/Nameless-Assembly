@@ -2,7 +2,7 @@
 	"recipes": [
 	{
 		"id": "ammo_backplate_0_steel",
-		"display_name": "Steel Plate",
+		"display_name": "Steel Backplate",
 		"inputs": [
 			{ "item": "steel_ingot", "amount": 1 }
 		],
@@ -13,7 +13,7 @@
 	},
 	{
 		"id": "ammo_shell_0_steel",
-		"display_name": "Steel Plate",
+		"display_name": "Steel Shell",
 		"inputs": [
 			{ "item": "steel_ingot", "amount": 2 }
 		],

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bebnno8fsoe44"
-path="res://.godot/imported/Corpta DEMO.otf-b23cd18dae6fa5a6573d02a64b4d33f0.fontdata"
+path="res://.godot/imported/Corpta DEMO.otf-a45f30f181f5b2983cba3a2e6cd945fe.fontdata"
 
 [deps]
 
-source_file="res://assets/Corpta DEMO.otf"
-dest_files=["res://.godot/imported/Corpta DEMO.otf-b23cd18dae6fa5a6573d02a64b4d33f0.fontdata"]
+source_file="res://assets/fonts/Corpta DEMO.otf"
+dest_files=["res://.godot/imported/Corpta DEMO.otf-a45f30f181f5b2983cba3a2e6cd945fe.fontdata"]
 
 [params]
 

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bh5fdi00c2olu"
+path="res://.godot/imported/Equip.wav-bc5b0504462352a6803a8f2fc87f390e.sample"
+
+[deps]
+
+source_file="res://assets/Sound FX Starter Pack Vol. 1/Medieval/Equip.wav"
+dest_files=["res://.godot/imported/Equip.wav-bc5b0504462352a6803a8f2fc87f390e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

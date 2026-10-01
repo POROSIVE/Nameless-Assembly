@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b15scv7lqlkar"
+path="res://.godot/imported/Giant Clock Interior Loop.wav-a82e5938b017c83c5bcc9b3fb05c3b11.sample"
+
+[deps]
+
+source_file="res://assets/Sound FX Starter Pack Vol. 1/Steampunk/Giant Clock Interior Loop.wav"
+dest_files=["res://.godot/imported/Giant Clock Interior Loop.wav-a82e5938b017c83c5bcc9b3fb05c3b11.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

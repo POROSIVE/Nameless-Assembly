@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dd7yc0s1oghfw" path="res://assets/contoour3bw.png" id="1_mr66h"]
 [ext_resource type="Script" uid="uid://c7mqoy0agamt4" path="res://script/start_menu.gd" id="2_wmmby"]
 [ext_resource type="Script" uid="uid://cwm20ouv8xnmv" path="res://script/settings_menu.gd" id="3_qp55b"]
-[ext_resource type="FontFile" uid="uid://bebnno8fsoe44" path="res://assets/Corpta DEMO.otf" id="3_taagd"]
+[ext_resource type="FontFile" uid="uid://bebnno8fsoe44" path="res://assets/fonts/Corpta DEMO.otf" id="3_taagd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syyua"]
 content_margin_left = 4.0
@@ -39,12 +39,14 @@ grow_vertical = 2
 script = ExtResource("2_wmmby")
 
 [node name="ColorRect" type="ColorRect" parent="StartMenu" unique_id=220356948]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.9929624, 0.9038335, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StartMenu" unique_id=825032074]

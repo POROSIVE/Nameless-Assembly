@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6tyv3m8fi0rl"
+path="res://.godot/imported/Winged Chaser.wav-75c5302adca242d31be4e8b21f9dc1d1.sample"
+
+[deps]
+
+source_file="res://assets/Sound FX Starter Pack Vol. 1/Sci-Fi/Winged Chaser.wav"
+dest_files=["res://.godot/imported/Winged Chaser.wav-75c5302adca242d31be4e8b21f9dc1d1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

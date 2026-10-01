@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgg1v7w2jmwqv"
+path="res://.godot/imported/Impact Axe Fall.wav-48a836d8a83a4a1354d25fe5c0805d58.sample"
+
+[deps]
+
+source_file="res://assets/Sound FX Starter Pack Vol. 1/Motions and Impacts/Impact Axe Fall.wav"
+dest_files=["res://.godot/imported/Impact Axe Fall.wav-48a836d8a83a4a1354d25fe5c0805d58.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
