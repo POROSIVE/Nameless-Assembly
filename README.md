@@ -1,5 +1,7 @@
 # Nameless Assembly
 A work in progress game
+<img width="1281" height="752" alt="journal-1793048885371" src="https://github.com/user-attachments/assets/2bc500db-72b9-416d-b9f0-a6b704d1f842" />
+
 
 ## Running the game
   1. **Prerequisite**: Using windows 10 or newer (Linux/macOS release unavailable)
