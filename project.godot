@@ -24,6 +24,7 @@ run/max_fps=60
 
 RecipeManager="*uid://bc4ucff53u2w2"
 AudioStreamPlayerGlobal="*uid://cjvh15snuw6s0"
+LoadScreen="*uid://dbape5tdigvjo"
 
 [display]
 
@@ -41,15 +42,12 @@ project/assembly_name="Nameless Assembly"
 movie_writer/fps=120
 version_control/autoload_on_startup=true
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/GDDraw/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
-
 [global_group]
 
 materializer_output=""
 smelter_input=""
 hose_handle=""
+interaction_ui=""
 
 [input]
 

@@ -1,6 +1,6 @@
 extends Node
 class_name PlayerInventory
-signal inventory_changed(item_id: String, new_ammount: int)
+signal inventory_changed(item_id: String, new_amount: int)
 
 const DEFAULT_INVENTORY_PATH := "res://data/inventory.json"
 const SAVE_INVENTORY_PATH := "user://player_inventory.json"

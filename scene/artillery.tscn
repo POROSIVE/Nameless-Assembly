@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dvfekuy6ecsa1"]
+
+[ext_resource type="Material" uid="uid://cakn3sv5qfpra" path="res://assets/texture/metallic.tres" id="1_hjd56"]
+[ext_resource type="Material" uid="uid://bw2dgfhduaxl" path="res://assets/texture/materializer.tres" id="2_s0af1"]
+
+[node name="artillery" type="Node3D" unique_id=1205437420]
+
+[node name="base" type="CSGCylinder3D" parent="." unique_id=1290660103]
+radius = 55.0
+height = 1.0
+
+[node name="dome" type="CSGSphere3D" parent="." unique_id=939317220]
+cast_shadow = 0
+radius = 40.0
+radial_segments = 32
+rings = 16
+smooth_faces = false
+
+[node name="innerdome" type="CSGSphere3D" parent="dome" unique_id=1671062636]
+cast_shadow = 0
+operation = 2
+radius = 36.0
+radial_segments = 32
+rings = 16
+smooth_faces = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="dome" unique_id=839740218]
+transform = Transform3D(1, 0, 0, 0, 1, 2.9802322e-08, 0, -2.9802322e-08, 1, 0, 8, -2.3841858e-07)
+cast_shadow = 0
+operation = 2
+size = Vector3(20, 70, 60)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="dome" unique_id=1302396317]
+transform = Transform3D(1, 0, 0, 0, 1, 2.9802322e-08, 0, -2.9802322e-08, 1, 0, 31, -9.23872e-07)
+cast_shadow = 0
+operation = 2
+size = Vector3(20, 24, 80)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="dome" unique_id=756584146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
+cast_shadow = 0
+operation = 2
+size = Vector3(100, 30, 100)
+
+[node name="barrel" type="CSGCylinder3D" parent="." unique_id=543990880]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.8660253, 0, -0.8660253, 0.5, 0, 27, 0)
+material_override = ExtResource("1_hjd56")
+radius = 10.0
+height = 50.0
+sides = 15
+
+[node name="chamber_1" type="CSGCylinder3D" parent="barrel" unique_id=1566253619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 41.875, 9.536743e-06)
+material_override = ExtResource("2_s0af1")
+radius = 8.0
+height = 41.75
+sides = 15
+
+[node name="chamber_2" type="CSGCylinder3D" parent="barrel" unique_id=1174528372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 104.984375, 1.9073486e-05)
+radius = 7.0
+height = 84.46875
+sides = 15
+
+[node name="rotatepoint" type="Node3D" parent="barrel" unique_id=2061455694]

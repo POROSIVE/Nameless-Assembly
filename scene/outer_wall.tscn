@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ch2vqwith0svl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmmqq"]
+
+[node name="OuterSupport" type="CSGSphere3D" unique_id=876274150]
+radius = 100.0
+radial_segments = 32
+rings = 16
+material = SubResource("StandardMaterial3D_mmmqq")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1331583174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 90, 0)
+cast_shadow = 0
+operation = 2
+radius = 100.0
+height = 20.0
+sides = 32
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=2061101533]
+cast_shadow = 0
+operation = 2
+radius = 98.0
+radial_segments = 32
+rings = 16
+material = SubResource("StandardMaterial3D_mmmqq")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=153985002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 79.5, 0)
+cast_shadow = 0
+size = Vector3(1000, 1, 1000)
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGBox3D" unique_id=1105724051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -78, 0)
+operation = 2
+radius = 98.0
+radial_segments = 32
+rings = 16
+material = SubResource("StandardMaterial3D_mmmqq")

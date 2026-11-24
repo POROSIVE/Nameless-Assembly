@@ -1,0 +1,110 @@
+[gd_scene format=4 uid="uid://b21v8gfwo7e1n"]
+
+[ext_resource type="Material" uid="uid://ddon1ktr43ghn" path="res://assets/texture/yellow.tres" id="1_1gjby"]
+[ext_resource type="Material" uid="uid://1r4p8twty1ai" path="res://assets/texture/smelter.tres" id="2_e8b6l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gjby"]
+albedo_color = Color(0.8513561, 0.8184823, 0.58326435, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1gjby"]
+_surfaces = [{
+"aabb": AABB(-2.5, -5, -5, 5, 10, 10),
+"attribute_data": PackedByteArray("AACAPwAAAACamVk/zczMPgAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAACamRk+zczMPpqZWT/NzMw+AACAPwAAgD8AAIA/AAAAAJqZWT+amRk/AACAPwAAgD+amVk/mpkZPwAAAAAAAIA/AACAPwAAgD+amVk/zczMPpqZWT9mZmY/AACAPwAAgD+amVk/ZmZmPwAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAAACamVk/zczMPZqZWT+amRk/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAAACamRk+zczMPZqZWT/NzMw9AACAPwAAAAAAAAAAAAAAAJqZGT7NzMw+AAAAAAAAAAAAAAAAAACAP5qZGT7NzMw+AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAgD+amVk/mpkZP5qZGT6amRk/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAgD+amRk+mpkZPwAAAAAAAAAAAAAAAAAAgD+amVk/ZmZmP5qZGT5mZmY/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAgD+amRk+ZmZmP5qZGT7NzMw+AACAPwAAAAAAAAAAAAAAAJqZGT7NzMw9AAAAAAAAAACamRk+mpkZP5qZGT7NzMw9AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AACAPwAAAAAAAAAAAACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAAAA"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 96,
+"vertex_data": PackedByteArray("AAAgwAAAoMAAAKDAAADgvwAAgL8AAKDAAAAgwAAAoEAAAKDAAAAgwAAAoMAAAKDAAAAgwAAAoEAAAKDAAAAgwAAAoMAAAKBAAAAgwAAAoMAAAKDAAAAgwAAAoMAAAKBAAAAgQAAAoMAAAKDAAAAgwAAAoMAAAKDAAADgPwAAgL8AAKDAAADgvwAAgL8AAKDAAAAgwAAAoMAAAKBAAAAgwAAAoEAAAKBAAADgvwAAgL8AAKBAAAAgwAAAoMAAAKBAAADgvwAAgL8AAKBAAAAgQAAAoMAAAKBAAAAgwAAAoEAAAKDAAADgvwAAgL8AAKDAAADgvwAAgEAAAKDAAAAgwAAAoEAAAKDAAADgvwAAgEAAAKDAAAAgQAAAoEAAAKDAAAAgwAAAoMAAAKBAAAAgwAAAoEAAAKDAAAAgwAAAoEAAAKBAAAAgwAAAoEAAAKBAAADgvwAAgEAAAKBAAADgvwAAgL8AAKBAAAAgwAAAoEAAAKDAAAAgQAAAoEAAAKBAAAAgwAAAoEAAAKBAAAAgwAAAoEAAAKBAAADgPwAAgEAAAKBAAADgvwAAgEAAAKBAAAAgwAAAoMAAAKDAAAAgQAAAoMAAAKDAAADgPwAAgL8AAKDAAAAgQAAAoMAAAKDAAAAgQAAAoEAAAKDAAADgPwAAgL8AAKDAAAAgwAAAoMAAAKBAAAAgQAAAoMAAAKBAAAAgQAAAoMAAAKDAAAAgQAAAoMAAAKBAAADgvwAAgL8AAKBAAADgPwAAgL8AAKBAAAAgQAAAoMAAAKDAAAAgQAAAoMAAAKBAAAAgQAAAoEAAAKBAAAAgQAAAoMAAAKBAAADgPwAAgL8AAKBAAAAgQAAAoEAAAKBAAAAgQAAAoEAAAKDAAADgvwAAgEAAAKDAAADgPwAAgEAAAKDAAAAgwAAAoEAAAKDAAAAgQAAAoEAAAKDAAAAgQAAAoEAAAKBAAAAgQAAAoMAAAKDAAAAgQAAAoEAAAKBAAAAgQAAAoEAAAKDAAAAgQAAAoEAAAKDAAADgPwAAgEAAAKDAAADgPwAAgL8AAKDAAAAgwAAAoEAAAKBAAAAgQAAAoEAAAKBAAADgPwAAgEAAAKBAAAAgQAAAoEAAAKBAAADgPwAAgL8AAKBAAADgPwAAgEAAAKBAAADgPwAAgL8AAKDAAADgvwAAgL8AAKBAAADgvwAAgL8AAKDAAADgvwAAgL8AAKDAAADgvwAAgL8AAKBAAADgvwAAgEAAAKDAAADgvwAAgL8AAKBAAADgvwAAgEAAAKBAAADgvwAAgEAAAKDAAADgvwAAgEAAAKBAAADgPwAAgEAAAKBAAADgvwAAgEAAAKDAAADgvwAAgL8AAKBAAADgPwAAgL8AAKDAAADgPwAAgL8AAKBAAADgPwAAgEAAAKBAAADgPwAAgEAAAKDAAADgvwAAgEAAAKDAAADgPwAAgEAAAKBAAADgPwAAgL8AAKDAAADgPwAAgEAAAKDAAADgPwAAgL8AAKBAAADgPwAAgL8AAKDAAADgPwAAgEAAAKBA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8//38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////////f/////////9/////////////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA/38AAP//////fwAA//////9/AAD//////3//////////f/////////9//////////38AAP//////fwAA//////9/AAD/////AAD/f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCA")
+}]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_e8b6l"]
+_surfaces = [{
+"aabb": AABB(-2.5, -5, -5, 5, 10, 10),
+"attribute_data": PackedByteArray("AACAPwAAAACamVk/zczMPgAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAACamRk+zczMPpqZWT/NzMw+AACAPwAAgD8AAIA/AAAAAJqZWT+amRk/AACAPwAAgD+amVk/mpkZPwAAAAAAAIA/AACAPwAAgD+amVk/zczMPpqZWT9mZmY/AACAPwAAgD+amVk/ZmZmPwAAAAAAAIA/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAAACamVk/zczMPZqZWT+amRk/AACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AACAPwAAAACamRk+zczMPZqZWT/NzMw9AACAPwAAAAAAAAAAAAAAAJqZGT7NzMw+AAAAAAAAAAAAAAAAAACAP5qZGT7NzMw+AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAgD+amVk/mpkZP5qZGT6amRk/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAgD+amRk+mpkZPwAAAAAAAAAAAAAAAAAAgD+amVk/ZmZmP5qZGT5mZmY/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAgD+amRk+ZmZmP5qZGT7NzMw+AACAPwAAAAAAAAAAAAAAAJqZGT7NzMw9AAAAAAAAAACamRk+mpkZP5qZGT7NzMw9AACAPwAAgD8AAAAAAAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AACAPwAAAAAAAAAAAACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAAAAAAAAA"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 96,
+"vertex_data": PackedByteArray("AAAgwAAAoMAAAKDAAADgvwAAgL8AAKDAAAAgwAAAoEAAAKDAAAAgwAAAoMAAAKDAAAAgwAAAoEAAAKDAAAAgwAAAoMAAAKBAAAAgwAAAoMAAAKDAAAAgwAAAoMAAAKBAAAAgQAAAoMAAAKDAAAAgwAAAoMAAAKDAAADgPwAAgL8AAKDAAADgvwAAgL8AAKDAAAAgwAAAoMAAAKBAAAAgwAAAoEAAAKBAAADgvwAAgL8AAKBAAAAgwAAAoMAAAKBAAADgvwAAgL8AAKBAAAAgQAAAoMAAAKBAAAAgwAAAoEAAAKDAAADgvwAAgL8AAKDAAADgvwAAgEAAAKDAAAAgwAAAoEAAAKDAAADgvwAAgEAAAKDAAAAgQAAAoEAAAKDAAAAgwAAAoMAAAKBAAAAgwAAAoEAAAKDAAAAgwAAAoEAAAKBAAAAgwAAAoEAAAKBAAADgvwAAgEAAAKBAAADgvwAAgL8AAKBAAAAgwAAAoEAAAKDAAAAgQAAAoEAAAKBAAAAgwAAAoEAAAKBAAAAgwAAAoEAAAKBAAADgPwAAgEAAAKBAAADgvwAAgEAAAKBAAAAgwAAAoMAAAKDAAAAgQAAAoMAAAKDAAADgPwAAgL8AAKDAAAAgQAAAoMAAAKDAAAAgQAAAoEAAAKDAAADgPwAAgL8AAKDAAAAgwAAAoMAAAKBAAAAgQAAAoMAAAKBAAAAgQAAAoMAAAKDAAAAgQAAAoMAAAKBAAADgvwAAgL8AAKBAAADgPwAAgL8AAKBAAAAgQAAAoMAAAKDAAAAgQAAAoMAAAKBAAAAgQAAAoEAAAKBAAAAgQAAAoMAAAKBAAADgPwAAgL8AAKBAAAAgQAAAoEAAAKBAAAAgQAAAoEAAAKDAAADgvwAAgEAAAKDAAADgPwAAgEAAAKDAAAAgwAAAoEAAAKDAAAAgQAAAoEAAAKDAAAAgQAAAoEAAAKBAAAAgQAAAoMAAAKDAAAAgQAAAoEAAAKBAAAAgQAAAoEAAAKDAAAAgQAAAoEAAAKDAAADgPwAAgEAAAKDAAADgPwAAgL8AAKDAAAAgwAAAoEAAAKBAAAAgQAAAoEAAAKBAAADgPwAAgEAAAKBAAAAgQAAAoEAAAKBAAADgPwAAgL8AAKBAAADgPwAAgEAAAKBAAADgPwAAgL8AAKDAAADgvwAAgL8AAKBAAADgvwAAgL8AAKDAAADgvwAAgL8AAKDAAADgvwAAgL8AAKBAAADgvwAAgEAAAKDAAADgvwAAgL8AAKBAAADgvwAAgEAAAKBAAADgvwAAgEAAAKDAAADgvwAAgEAAAKBAAADgPwAAgEAAAKBAAADgvwAAgEAAAKDAAADgvwAAgL8AAKBAAADgPwAAgL8AAKDAAADgPwAAgL8AAKBAAADgPwAAgEAAAKBAAADgPwAAgEAAAKDAAADgvwAAgEAAAKDAAADgPwAAgEAAAKBAAADgPwAAgL8AAKDAAADgPwAAgEAAAKDAAADgPwAAgL8AAKBAAADgPwAAgL8AAKDAAADgPwAAgEAAAKBA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8//////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8//38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////////f/////////9/////////////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA/38AAP//////fwAA//////9/AAD//////3//////////f/////////9//////////38AAP//////fwAA//////9/AAD/////AAD/f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCA")
+}]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mmmqq"]
+height = 4.875
+
+[node name="Crane" type="Node3D" unique_id=1692947850]
+
+[node name="MainSupport" type="CSGBox3D" parent="." unique_id=806832601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
+material_override = ExtResource("1_1gjby")
+size = Vector3(100, 4, 10)
+
+[node name="controls" type="CSGBox3D" parent="." unique_id=1938019019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 17, 3.5)
+material_override = ExtResource("1_1gjby")
+size = Vector3(18, 8, 25)
+
+[node name="subtr" type="CSGBox3D" parent="controls" unique_id=427991830]
+transform = Transform3D(1, 0, 0, 0, 0.70710665, 0.7071067, 0, -0.7071067, 0.70710665, 3, -3, 12.5)
+operation = 2
+size = Vector3(12, 7, 17)
+
+[node name="pulleys" type="CSGBox3D" parent="." unique_id=597282980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)
+material_override = SubResource("StandardMaterial3D_1gjby")
+size = Vector3(5, 7, 18)
+
+[node name="subtr" type="CSGBox3D" parent="pulleys" unique_id=1726951024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+material_override = SubResource("StandardMaterial3D_1gjby")
+operation = 2
+size = Vector3(2, 2, 18)
+
+[node name="hookMount" type="CSGBox3D" parent="." unique_id=439294415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+material_override = SubResource("StandardMaterial3D_1gjby")
+size = Vector3(4, 5, 5)
+
+[node name="mobility_strut" type="Node3D" parent="." unique_id=1869166830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+
+[node name="left_mover" type="MeshInstance3D" parent="mobility_strut" unique_id=849743962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -1, 0)
+material_override = ExtResource("1_1gjby")
+mesh = SubResource("ArrayMesh_1gjby")
+
+[node name="right_mover" type="MeshInstance3D" parent="mobility_strut" unique_id=878579854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, -1, 0)
+material_override = ExtResource("1_1gjby")
+mesh = SubResource("ArrayMesh_e8b6l")
+
+[node name="smelterClamp" type="Node3D" parent="." unique_id=2146221067]
+
+[node name="clampArm" type="CSGBox3D" parent="smelterClamp" unique_id=367031188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = ExtResource("1_1gjby")
+size = Vector3(53, 2, 5)
+
+[node name="clamps" type="CSGBox3D" parent="smelterClamp" unique_id=1711466402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, -13.5, 0)
+material_override = ExtResource("1_1gjby")
+size = Vector3(2, 27, 5)
+
+[node name="clampthing" type="CSGBox3D" parent="smelterClamp/clamps" unique_id=1025533506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -11.5, 0)
+material_override = ExtResource("1_1gjby")
+size = Vector3(2, 4, 20)
+
+[node name="clamps2" type="CSGBox3D" parent="smelterClamp" unique_id=188926674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, -13.5, 0)
+material_override = ExtResource("1_1gjby")
+size = Vector3(2, 27, 5)
+
+[node name="clampthing" type="CSGBox3D" parent="smelterClamp/clamps2" unique_id=1445522168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -11.5, 0)
+material_override = ExtResource("1_1gjby")
+size = Vector3(2, 4, 20)
+
+[node name="cable" type="MeshInstance3D" parent="." unique_id=1298161094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.63015, 0)
+material_override = ExtResource("2_e8b6l")
+mesh = SubResource("CylinderMesh_mmmqq")
