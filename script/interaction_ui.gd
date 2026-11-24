@@ -19,6 +19,8 @@ var inventory: PlayerInventory
 var current_crafter: ComponentCrafter
 
 
+@onready var inventory_panel: PanelContainer = $HUD/InventoryPanel
+@onready var inventory_list: VBoxContainer = $HUD/InventoryPanel/MarginContainer/InventoryColumn/InventoryList
 @onready var crafting_panel: PanelContainer = $HUD/CraftingPanel
 @onready var crafting_title: Label = $HUD/CraftingPanel/MarginContainer/CraftingColumn/CraftingTitle
 @onready var crafting_list: VBoxContainer = $HUD/CraftingPanel/MarginContainer/CraftingColumn/CraftingList
@@ -26,9 +28,7 @@ var current_crafter: ComponentCrafter
 
 var current_recipe_label: Label = null
 var crafting_progress: ProgressBar = null
-
 var _icon_gen: ItemIcon
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_inventory"):
@@ -38,6 +38,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # for note craftr locates this interface through the group instead of relying on the scene node's name.
 func _ready() -> void:
 	add_to_group("interaction_ui")
+	inventory_panel.hide()
 	crafting_panel.hide()
 	close_button.pressed.connect(close_crafter)
 	_find_crafting_nodes()
@@ -77,6 +78,7 @@ func open_crafter(
 	crafting_title.text = crafter.display_name.to_upper()
 	if player.has_method("_refresh_hotbar"):
 		player._refresh_hotbar()
+	_refresh_inventory()
 	_refresh_crafting_list()
 	current_recipe_label.text = ""
 	crafting_progress.value = 0
@@ -96,14 +98,51 @@ func close_crafter() -> void:
 		player.capture_mouse()
 
 func toggle_inventory() -> void:
-	var player_node := get_tree().get_first_node_in_group("player")
-	if player_node == null:
+	if inventory == null:
+		var player_node := get_tree().get_first_node_in_group("player")
+		if player_node != null and player_node.has_method("_get_inventory"):
+			inventory = player_node._get_inventory(player_node)
+	
+	inventory_panel.visible = not inventory_panel.visible
+	if inventory_panel.visible:
+		_refresh_inventory()
+
+func _refresh_inventory() -> void:
+	if inventory_list == null:
 		return
-	if player_node.has_method("_refresh_hotbar"):
-		player_node._refresh_hotbar()
+	
+	for child in inventory_list.get_children():
+		child.queue_free()
+	
+	if inventory == null:
+		var missing_label := Label.new()
+		missing_label.text = "NO INVENTORY"
+		inventory_list.add_child(missing_label)
+		return
+		
+	var contents: Dictionary = inventory.snapshot()
+	if contents.is_empty():
+		var empty_label := Label.new()
+		empty_label.text = "The inventory is empty"
+		inventory_list.add_child(empty_label)
+		return
 
-
-
+	var item_ids: Array = contents.keys()
+	item_ids.sort()
+	for item_id in item_ids:
+		var amount: int = int(contents[item_id])
+		if amount <= 0:
+			continue
+	
+		var row := HBoxContainer.new()
+		var item_label := Label.new()
+		item_label.text = _pretty_item_name(String(item_id))
+		item_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var amount_label := Label.new()
+		amount_label.text = str(amount)
+		row.add_child(item_label)
+		row.add_child(amount_label)
+		inventory_list.add_child(row)
 
 func _refresh_crafting_list() -> void:
 	if crafting_list == null:
@@ -118,15 +157,6 @@ func _refresh_crafting_list() -> void:
 	var lookup := Callable(inventory, "get_amount")
 	for recipe in RecipeManager.recipes:
 		var recipe_id: String = String(recipe.get("id", ""))
-		var recipe_name: String = String(
-			recipe.get("display_name", recipe_id)
-		)
-		var inputs_text: String = _format_inputs(
-			recipe.get("inputs", [])
-		)
-		var outputs_text: String = _format_outputs(
-			recipe.get("outputs", [])
-		)
 		var craft_time: float = float(
 			recipe.get("craft_time", 0.0)
 		)
@@ -178,6 +208,8 @@ func _on_recipe_pressed(recipe_id: String) -> void:
 	if success:
 		if player.has_method("_refresh_hotbar"):
 			player._refresh_hotbar()
+			
+		_refresh_inventory()
 		_refresh_crafting_list()
 
 func _on_inventory_changed(
@@ -187,9 +219,8 @@ func _on_inventory_changed(
 	if player != null and player.has_method("_refresh_hotbar"):
 		player._refresh_hotbar()
 		
-		
-
 	if crafting_panel.visible:
+		_refresh_inventory()
 		_refresh_crafting_list()
 
 
@@ -237,14 +268,17 @@ func _on_cancel_pressed() -> void:
 		
 		
 func _on_crafting_started(recipe: Dictionary, total_time: float) -> void:
-	var name := String(recipe.get("display_name", recipe.get("id", "?")))
-	current_recipe_label.text = "Crafting: %s" % name
+	var recipe_display_name := String(
+		recipe.get("display_name", recipe.get("id", "?"))
+	)
+	current_recipe_label.text = "Crafting: %s" % recipe_display_name
 	crafting_progress.max_value = total_time
+
 	
 func _on_crafting_updated(time_left: float) -> void:
 	crafting_progress.value = time_left
 	
-func _on_crafting_finished(outputs: Array) -> void:
+func _on_crafting_finished(_outputs: Array) -> void:
 	current_recipe_label.text = "Done!"
 	crafting_progress.value = 0
 	

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cijxgqibgss4x"]
+
+[node name="MechAssember" type="Node3D" unique_id=2055694804]
+
+[node name="base" type="CSGBox3D" parent="." unique_id=108638518]
+size = Vector3(100, 1, 100)
+
+[node name="Holder" type="CSGBox3D" parent="." unique_id=1902508708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 25, -10)
+size = Vector3(2, 52, 1)
+
+[node name="Holder2" type="CSGBox3D" parent="Holder" unique_id=1093251864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+size = Vector3(2, 52, 1)
+
+[node name="Holder3" type="CSGBox3D" parent="Holder" unique_id=1351365726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 10)
+size = Vector3(2, 1, 20)
+
+[node name="Holder4" type="CSGBox3D" parent="Holder" unique_id=1372022444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19, 10)
+size = Vector3(2, 1, 20)
+
+[node name="truss" type="CSGBox3D" parent="." unique_id=934843520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 25, 10)
+size = Vector3(28, 2, 1)
+
+[node name="truss2" type="CSGBox3D" parent="." unique_id=360634709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 25, -13)
+size = Vector3(28, 2, 1)

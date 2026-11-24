@@ -157,7 +157,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# As good practice, you should never try to change something that works
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = Vector3.ZERO
 	

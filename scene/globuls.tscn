@@ -16,3 +16,4 @@ mesh = SubResource("SphereMesh_mmmqq")
 
 [node name="outer_struct_draft" parent="." unique_id=1098779216 instance=ExtResource("2_t3gqa")]
 transform = Transform3D(1100, 0, 0, 0, 1100, 0, 0, 0, 1100, 0, 0, 0)
+visible = false

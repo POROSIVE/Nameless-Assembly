@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://cu84t6sbrdyls"]
+
+[ext_resource type="Material" uid="uid://1r4p8twty1ai" path="res://assets/texture/smelter.tres" id="1_b2ve2"]
+[ext_resource type="Material" uid="uid://cnpnj6iinjoko" path="res://assets/texture/molten.tres" id="2_rktn0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mmmqq"]
+size = Vector2(44, 44)
+
+[node name="Industrial Smelter" type="Node3D" unique_id=521956743]
+
+[node name="base" type="CSGBox3D" parent="." unique_id=1819271355]
+use_collision = true
+size = Vector3(50, 1, 100)
+
+[node name="furnace" type="CSGBox3D" parent="." unique_id=878356283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34, -25)
+use_collision = true
+size = Vector3(49, 68, 49)
+
+[node name="furnacestrut" type="CSGBox3D" parent="furnace" unique_id=1250137110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 15)
+use_collision = true
+size = Vector3(52, 70, 7)
+material = ExtResource("1_b2ve2")
+
+[node name="furnacestrut2" type="CSGBox3D" parent="furnace" unique_id=863169727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -15)
+material_override = ExtResource("1_b2ve2")
+use_collision = true
+size = Vector3(52, 70, 7)
+material = ExtResource("1_b2ve2")
+
+[node name="outputFaucet" type="CSGCylinder3D" parent="." unique_id=1168546959]
+transform = Transform3D(1, 0, 0, 0, 0.37991416, 0.9250217, 0, -0.9250217, 0.37991416, -15, 57.97074, -0.17820358)
+material_override = ExtResource("1_b2ve2")
+use_collision = true
+radius = 2.0
+height = 9.5
+sides = 12
+
+[node name="outputFaucet2" type="CSGCylinder3D" parent="." unique_id=770710446]
+transform = Transform3D(1, 0, 0, 0, 0.37991416, 0.9250217, 0, -0.9250217, 0.37991416, 0, 57.97074, -0.17820358)
+material_override = ExtResource("1_b2ve2")
+use_collision = true
+radius = 2.0
+height = 9.5
+sides = 12
+
+[node name="outputFaucet3" type="CSGCylinder3D" parent="." unique_id=138442311]
+transform = Transform3D(1, 0, 0, 0, 0.37991416, 0.9250217, 0, -0.9250217, 0.37991416, 15, 57.971, -0.178)
+material_override = ExtResource("1_b2ve2")
+use_collision = true
+radius = 2.0
+height = 9.5
+sides = 12
+
+[node name="holder" type="CSGBox3D" parent="." unique_id=129241804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 24)
+use_collision = true
+size = Vector3(49, 6, 49)
+
+[node name="subtr" type="CSGBox3D" parent="holder" unique_id=481158564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+operation = 2
+use_collision = true
+size = Vector3(47, 8, 47)
+
+[node name="subtr2" type="CSGBox3D" parent="holder" unique_id=466189444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 22)
+operation = 2
+use_collision = true
+size = Vector3(47, 8, 7)
+
+[node name="CastBucket" type="CSGBox3D" parent="." unique_id=1152604388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 24)
+material_override = ExtResource("1_b2ve2")
+use_collision = true
+size = Vector3(47, 32, 47)
+
+[node name="subtr" type="CSGBox3D" parent="CastBucket" unique_id=1534091163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+operation = 2
+use_collision = true
+size = Vector3(44, 32, 44)
+
+[node name="content" type="MeshInstance3D" parent="CastBucket" unique_id=1683384867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.427078, 0)
+mesh = SubResource("PlaneMesh_mmmqq")
+surface_material_override/0 = ExtResource("2_rktn0")
+
+[node name="CastBucketHandle" type="CSGBox3D" parent="." unique_id=188296001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 25.5, 24)
+material_override = ExtResource("1_b2ve2")
+use_collision = true
+size = Vector3(3, 7, 47)
+
+[node name="CastBucketHandle2" type="CSGBox3D" parent="." unique_id=1270081791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 25.5, 24)
+material_override = ExtResource("1_b2ve2")
+use_collision = true
+size = Vector3(3, 7, 47)
+
+[node name="BucketHoseTap" type="CSGCylinder3D" parent="." unique_id=2108516219]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -26, 59.5, -9.892157)
+material_override = ExtResource("1_b2ve2")
+use_collision = true
+radius = 3.0
+height = 3.0
+sides = 12
+
+[node name="subt" type="CSGCylinder3D" parent="BucketHoseTap" unique_id=1553425954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2436523, 0)
+material_override = ExtResource("1_b2ve2")
+operation = 2
+use_collision = true
+radius = 2.0
+height = 1.4267578
+sides = 12

@@ -10,7 +10,8 @@ func _ready():
 	settings_btn.pressed.connect(Callable(self, "_settings_btn_pressed"))
 
 func _start_btn_pressed():
-	get_tree().change_scene_to_file("res://scene/factory.tscn")
+	LoadScreen.load_scenes("res://scene/factory.tscn")
+	#get_tree().change_scene_to_file("res://scene/factory.tscn")
 	print("Start pressed")
 	
 func _settings_btn_pressed():
